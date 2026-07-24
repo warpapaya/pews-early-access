@@ -53,14 +53,12 @@ for (const viewport of viewports) {
   if (!metrics.robots?.includes('index')) report.failures.push(`${viewport.name}: page is not indexable`);
   if (!metrics.canonical?.startsWith('https://')) report.failures.push(`${viewport.name}: canonical missing`);
 
-  await page.getByRole('tab', { name: 'Care & follow-ups' }).click();
-  const careVisible = await page.locator('#panel-care').isVisible();
-  await page.getByRole('tab', { name: 'Planning Center coexistence' }).click();
-  const givingVisible = await page.locator('#panel-giving').isVisible();
-  if (!careVisible || !givingVisible) report.failures.push(`${viewport.name}: product tabs did not switch panels`);
   const pageText = await page.locator('body').innerText();
   if (!pageText.includes('$39') || !pageText.includes('$399')) report.failures.push(`${viewport.name}: founding price missing`);
-  if (!pageText.includes('Not in this phase') || !pageText.includes('Full Planning Center replacement')) report.failures.push(`${viewport.name}: beta boundary missing`);
+  if (!pageText.includes('Planning Center stays') || !pageText.includes('Full Planning Center replacement')) report.failures.push(`${viewport.name}: beta boundary missing`);
+  if (!pageText.includes('Know what needs attention') || !pageText.includes('Less chasing. Fewer dropped handoffs.')) report.failures.push(`${viewport.name}: prospect value copy missing`);
+  const loadedFont = await page.evaluate(() => document.fonts.check('16px Inter'));
+  if (!loadedFont) report.failures.push(`${viewport.name}: bundled Inter font did not load`);
 
   const targetIssues = await page.evaluate(() => {
     const candidates = [...document.querySelectorAll('a, button, summary')]
@@ -83,12 +81,11 @@ for (const viewport of viewports) {
   if (serious.length) report.failures.push(`${viewport.name}: axe ${serious.map((item) => item.id).join(', ')}`);
 
   await page.screenshot({ path: path.join(outDir, `${viewport.name}-full.png`), fullPage: true });
-  await page.locator('#early-access').screenshot({ path: path.join(outDir, `${viewport.name}-access.png`) });
+  await page.locator('#join').screenshot({ path: path.join(outDir, `${viewport.name}-access.png`) });
   report.viewports.push({
     ...viewport,
     metrics,
-    careVisible,
-    givingVisible,
+    loadedFont,
     axeViolations: axe.violations.length,
     seriousAxeViolations: serious.length,
     targetIssues,
