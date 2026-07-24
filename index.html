@@ -3,9 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pews is church operations software shaped around the work of ministry. Request early access to the beta.">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Pews — Church work, held together</title>
+  <meta name="description" content="Pews brings service planning, volunteer scheduling, people, care follow-ups, giving, and communication into one church operations workspace. Request early access.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#102f3d">
+  <link rel="canonical" href="https://warpapaya.github.io/pews-early-access/">
+  <link rel="icon" href="icon.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pews">
+  <meta property="og:url" content="https://warpapaya.github.io/pews-early-access/">
+  <meta property="og:title" content="Pews — Hold the church week together">
+  <meta property="og:description" content="One church operations workspace for the week your ministry carries. Request early access and help shape the beta.">
+  <meta property="og:image" content="https://warpapaya.github.io/pews-early-access/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pews — church operations, with the mission in view">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pews — Hold the church week together">
+  <meta name="twitter:description" content="One church operations workspace for the week your ministry carries. Request early access.">
+  <meta name="twitter:image" content="https://warpapaya.github.io/pews-early-access/social-card.png">
+  <title>Pews — Hold the church week together</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Pews",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Church operations software for service planning, volunteer scheduling, people, care follow-ups, giving, and communication.",
+    "url": "https://warpapaya.github.io/pews-early-access/",
+    "creator": {
+      "@type": "Organization",
+      "name": "Clearline Technology Methods"
+    }
+  }
+  </script>
+
   <style>
     :root {
       --ink: #102f3d;
@@ -283,19 +315,27 @@
     .founder-body { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; padding-top: 30px; border-top: 1px solid var(--line); }
     .founder-body p { margin: 0; color: var(--body); }
 
+    .founder-signoff { margin-top: 22px; color: var(--ink); font-size: 14px; font-weight: 650; }
+    .founder-signoff span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; font-weight: 500; }
+
     .early-access { padding: 112px 0; background: var(--accent-soft); }
-    .access-grid { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(60px, 9vw, 120px); align-items: start; }
+    .access-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(60px, 9vw, 120px); align-items: center; }
     .access-copy .section-title { font-size: clamp(45px, 6vw, 74px); }
     .access-points { margin: 34px 0 0; padding: 0; list-style: none; }
     .access-points li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; margin: 17px 0; color: var(--body); }
     .access-points li::before { content: "↳"; color: var(--accent); font-weight: 700; }
     .rate-note { margin-top: 31px; padding: 18px 0 0; border-top: 1px solid #b9cec2; color: var(--ink); font-size: 14px; font-weight: 600; }
-    .form-card { padding: clamp(26px, 4vw, 42px); border: 1px solid #b7cdc0; border-radius: 18px; background: var(--white); box-shadow: 0 18px 55px rgba(16,47,61,.08); }
-    .form-card h3 { margin: 0 0 8px; font: 500 31px/1.1 var(--font-display); letter-spacing: -.02em; }
-    .form-card > p { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
-    .form-embed { position: relative; height: 690px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #edf5f2; }
-    .form-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .fit-card { padding: clamp(28px, 5vw, 52px); border: 1px solid #b7cdc0; border-radius: 18px; background: var(--white); box-shadow: 0 18px 55px rgba(16,47,61,.08); }
+    .fit-card h3 { margin: 0 0 12px; font: 500 clamp(30px, 4vw, 40px)/1.06 var(--font-display); letter-spacing: -.025em; }
+    .fit-card > p { margin: 0; color: var(--body); font-size: 16px; }
+    .fit-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin: 30px 0; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--line); }
+    .fit-meta div { min-height: 92px; padding: 17px; background: #f8fbf9; }
+    .fit-meta strong { display: block; margin-bottom: 5px; color: var(--ink); font-size: 13px; }
+    .fit-meta span { color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .fit-card .button { width: 100%; min-height: 54px; }
     .form-fine { margin: 15px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .form-fine a, .footer-links a { text-underline-offset: 3px; }
+    .beta-boundary { margin-top: 18px; padding: 14px 16px; border-left: 3px solid var(--warm); background: #f9f4ea; color: var(--body); font-size: 12px; line-height: 1.5; }
 
     .questions { padding: 110px 0; }
     .questions-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; }
@@ -394,8 +434,8 @@
       .founder-grid { gap: 34px; }
       .founder-body { grid-template-columns: 1fr; gap: 19px; }
       .early-access { padding: 72px 0; }
-      .form-card { padding: 24px 18px; }
-      .form-embed { height: min(720px, 82dvh); min-height: 580px; }
+      .fit-card { padding: 26px 20px; }
+      .fit-meta { grid-template-columns: 1fr; }
       .questions { padding: 72px 0; }
       .questions-grid { gap: 30px; }
       summary { min-height: 76px; }
@@ -435,11 +475,11 @@
             <a class="button button-primary" href="#early-access">Request beta access <span class="arrow" aria-hidden="true">→</span></a>
             <a class="button button-quiet" href="#product">See the product direction</a>
           </div>
-          <p class="hero-note">Early access is for churches evaluating Pews as a paid product. Pricing is still being finalized.</p>
+          <p class="hero-note">Private beta · No payment or commitment to request a conversation · Pricing is not final.</p>
         </div>
 
         <div class="product-stage" aria-label="Illustrative Pews product preview with sample data">
-          <div class="sample-label">Illustrative interface preview · sample data</div>
+          <div class="sample-label">Product direction · illustrative interface · sample data</div>
           <div class="app-frame">
             <aside class="app-sidebar" aria-hidden="true">
               <div class="mini-brand"><span class="mini-mark">p</span> pews</div>
@@ -514,8 +554,8 @@
     <section class="evidence" id="product" data-od-id="product-evidence">
       <div class="shell">
         <div class="evidence-head">
-          <div><p class="eyebrow">Grounded in the product</p><h2 class="section-title">Not a promise wall. A look at the work Pews already models.</h2></div>
-          <p class="section-intro">These previews reflect workflows already represented in Pews. The names and values shown are illustrative, so you can judge the product idea without mistaking sample data for customer proof.</p>
+          <div><p class="eyebrow">Grounded in the product</p><h2 class="section-title">A look at the work Pews is being built to support.</h2></div>
+          <p class="section-intro">These previews reflect workflows represented in the current product direction. Names and values are illustrative—not customer data, testimonials, or proof of production use.</p>
         </div>
 
         <div class="proof-tabs" role="tablist" aria-label="Product previews">
@@ -546,35 +586,38 @@
     <section class="founder" id="story" data-od-id="founder-story">
       <div class="shell founder-grid">
         <aside class="founder-aside"><div class="founder-rule" aria-hidden="true"></div><p>Pews is being built from lived ministry experience and twelve years in technology—not from a distance from church operations.</p></aside>
-        <div><p class="eyebrow">Why this product</p><blockquote class="founder-quote">“Church software should respect both the people doing the work and the mission funds paying for it.”</blockquote><div class="founder-body"><p>The founder spent years as a worship pastor before moving into technology. That first chapter made the weekly reality concrete: plans change, volunteers need clarity, people need care, and the administrative work never stays in one lane.</p><p>After twelve years in technology, those lessons are coming back together in Pews: applying the useful discipline of the corporate world without asking churches to buy complexity they do not need—or divert unreasonable resources away from the mission.</p></div></div>
+        <div><p class="eyebrow">Why this product</p><blockquote class="founder-quote">“Church software should respect both the people doing the work and the mission funds paying for it.”</blockquote><div class="founder-body"><p>I spent years as a worship pastor before moving into technology. That made the weekly reality concrete: plans change, volunteers need clarity, people need care, and the administrative work never stays in one lane.</p><p>After twelve years in technology, those lessons are coming back together in Pews: useful operational discipline without asking churches to buy complexity they do not need—or divert unreasonable resources away from the mission.</p></div><p class="founder-signoff">Petie Clark<span>Founder of Pews · former worship pastor · technology leader</span></p></div>
       </div>
     </section>
 
     <section class="early-access" id="early-access" data-od-id="early-access-form">
       <div class="shell access-grid">
-        <div class="access-copy"><p class="eyebrow">Beta early access</p><h2 class="section-title">Help shape software that understands the week you carry.</h2><p class="section-intro">Pews is looking for church leaders and operators willing to evaluate a product in progress, share how their ministry actually works, and tell us where software creates more burden than clarity.</p><ul class="access-points"><li>For pastors, worship pastors, executive pastors, administrators, and ministry operations leaders</li><li>A focused conversation about fit—not an invented promise that every church works the same way</li><li>Product access and timing will depend on beta fit and readiness</li></ul><p class="rate-note">Accepted beta participants will receive a preferred, committed early-access rate once pricing is finalized.</p></div>
+        <div class="access-copy"><p class="eyebrow">Private beta</p><h2 class="section-title">Help shape software around the week you actually carry.</h2><p class="section-intro">Pews is looking for a small first group of church leaders willing to show where the week breaks down, evaluate focused workflows, and speak plainly about what would—or would not—earn a place in their ministry.</p><ul class="access-points"><li>Built for pastors, worship leaders, executive pastors, administrators, and ministry operators</li><li>Start with a fit conversation, not a canned sales demo</li><li>If there is a fit, we will agree on a narrow beta scope before asking your church to use it</li></ul><p class="rate-note">Pews is intended to be a paid product. The fit check asks for budget context, not a commitment to pricing that has not been finalized.</p></div>
 
-        <div class="form-card">
-          <h3>Request a beta conversation</h3>
-          <p>Tell us where your church is feeling the most friction. The fit check takes about three minutes.</p>
-          <div class="form-embed">
-            <iframe title="Pews early-access fit check" src="https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&amp;brand=pews&amp;page=landing&amp;placement=inline_form&amp;intent=beta_early_access" loading="eager"></iframe>
+        <div class="fit-card">
+          <h3>Is your church a fit for the first group?</h3>
+          <p>Tell us where your current tools create friction. Petie will review each response and follow up personally when there is a useful next step.</p>
+          <div class="fit-meta" aria-label="Fit check details">
+            <div><strong>About 2 minutes</strong><span>Eight focused questions about your church and current workflow.</span></div>
+            <div><strong>No sales trap</strong><span>No payment, automatic enrollment, or commitment to an unknown price.</span></div>
           </div>
-          <p class="form-fine">No payment is collected here. Submitting requests a beta conversation; it does not guarantee acceptance or commit your church to a price.</p>
+          <a class="button button-primary" data-fit-check-link href="https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&amp;page=landing&amp;placement=fit_card&amp;intent=beta_early_access">Start the early-access fit check <span class="arrow" aria-hidden="true">→</span></a>
+          <p class="form-fine">By submitting, you ask Pews to contact you about early access. See the <a href="privacy.html">privacy notice</a>. Participation and timing depend on fit and product readiness.</p>
+          <p class="beta-boundary"><strong>Private-beta boundary:</strong> The interface previews on this page are illustrative. They are not live church data, customer results, or a claim that every shown workflow is production-ready.</p>
         </div>
       </div>
     </section>
 
     <section class="questions" data-od-id="questions">
       <div class="shell questions-grid"><div><p class="eyebrow">Before you request access</p><h2>Clear answers, while the product is still early.</h2></div><div class="faq">
-        <details><summary>Is the beta free?</summary><p>No free-beta claim is being made. Pews is being evaluated as a paid product, and final pricing is still being set. Accepted beta participants will receive a preferred, committed early-access rate once pricing is finalized.</p></details>
+        <details><summary>What will the beta cost?</summary><p>Pricing and the first beta scope are still being validated. Pews is intended to be a paid product, but requesting a conversation does not commit your church to a price. Any scope, timing, and cost will be clear before participation begins.</p></details>
         <details><summary>What parts of church work does Pews cover?</summary><p>Pews includes people and households, services and songs, volunteer scheduling, care follow-ups, giving and statements, communications, check-ins, groups, events, prayer, media, sermons, streaming, rooms, reports, and administrative settings. Beta scope may be narrower than the complete product.</p></details>
-        <details><summary>What happens after I submit?</summary><p>The Pews team will review your answers and follow up when there is a useful next step. Submission is a request for a conversation, not a guarantee of access, timing, or a particular feature set.</p></details>
+        <details><summary>What happens after I submit?</summary><p>Petie will review your answers. If your church looks like a useful fit for the first group, he will follow up to learn more and agree on a narrow evaluation. Submission is a request for that conversation—not a guarantee of access, timing, or a particular feature set.</p></details>
       </div></div>
     </section>
   </main>
 
-  <footer data-od-id="footer"><div class="shell footer-grid"><a class="wordmark" href="#top" aria-label="Pews home">pews<i aria-hidden="true"></i></a><p class="footer-note">Church operations software, built with the mission in view.</p><a class="footer-cta" href="#early-access">Request beta access</a></div></footer>
+  <footer data-od-id="footer"><div class="shell footer-grid"><a class="wordmark" href="#top" aria-label="Pews home">pews<i aria-hidden="true"></i></a><p class="footer-note">A Clearline Technology Methods product · © 2026</p><div class="footer-links"><a href="privacy.html">Privacy</a> · <a href="terms.html">Early-access terms</a> · <a href="#early-access">Request access</a></div></div></footer>
 
   <script>
     (() => {
@@ -604,10 +647,20 @@
         });
       });
 
-      window.addEventListener('message', (event) => {
-        if (event.origin === 'https://intake.clearlinetechmethods.com' && event.data === 'formbricksSurveyCompleted') {
-          document.querySelector('.form-card h3').textContent = 'Thanks for helping shape Pews.';
-        }
+      const fitCheckBase = 'https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq';
+      const allowedAttribution = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'ref'];
+      const pageParams = new URLSearchParams(window.location.search);
+      const fitCheckUrl = new URL(fitCheckBase);
+      fitCheckUrl.searchParams.set('brand', 'pews');
+      fitCheckUrl.searchParams.set('page', 'landing');
+      fitCheckUrl.searchParams.set('placement', 'fit_card');
+      fitCheckUrl.searchParams.set('intent', 'beta_early_access');
+      allowedAttribution.forEach((key) => {
+        const value = pageParams.get(key);
+        if (value) fitCheckUrl.searchParams.set(key, value.slice(0, 160));
+      });
+      document.querySelectorAll('[data-fit-check-link]').forEach((link) => {
+        link.href = fitCheckUrl.toString();
       });
     })();
   </script>

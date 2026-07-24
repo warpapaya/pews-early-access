@@ -1,6 +1,5 @@
-# Allow all pages for search engines
+# Allow the public early-access pages for search engines
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://pews.church/sitemap.xml
+Sitemap: https://warpapaya.github.io/pews-early-access/sitemap.xml

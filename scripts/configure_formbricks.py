@@ -79,8 +79,8 @@ def contact_info() -> dict:
     return {
         "id": stable_id("contact"),
         "type": "contactInfo",
-        "headline": i18n("Where should we send your early-access invitation?"),
-        "subheader": i18n("No newsletter treadmill. We will only use this to follow up about Pews early access and product research."),
+        "headline": i18n("Where should Petie follow up?"),
+        "subheader": i18n("No automatic enrollment or generic newsletter. Your details are used for Pews early-access research and follow-up."),
         "required": True,
         "firstName": field(True, True, "First name"),
         "lastName": field(True, True, "Last name"),
@@ -137,6 +137,7 @@ QUESTIONS = [
     open_text(
         "switch_reason",
         "What would Pews have to get right for you to seriously consider switching?",
+        required=False,
         placeholder="A specific workflow, cost concern, migration worry, or must-have capability is most useful.",
     ),
     single(
@@ -145,14 +146,16 @@ QUESTIONS = [
         ["As soon as invited", "Within the next 3 months", "Later this year", "Just following the build for now"],
     ),
     single(
-        "price_commitment",
-        "If Pews fits your church, are you open to a paid early-access commitment?",
+        "price_range",
+        "If Pews replaced several current tools, what monthly range could be realistic for your church?",
         [
-            "Yes — if the preferred beta rate and scope make sense",
-            "Possibly — I need the exact rate and terms first",
-            "Not yet — I would only test without a commitment",
+            "Under $50 per month",
+            "$50–$99 per month",
+            "$100–$149 per month",
+            "$150+ per month",
+            "I need scope and savings details before I can estimate",
         ],
-        subheader="We are not publishing a number yet. Accepted beta churches will see the exact preferred rate and terms before choosing whether to enroll.",
+        subheader="This is budget context, not a commitment. Pricing and private-beta scope are still being validated.",
     ),
     contact_info(),
 ]
@@ -209,8 +212,8 @@ BODY = {
     "questions": QUESTIONS,
     "welcomeCard": {
         "enabled": True,
-        "headline": i18n("Help shape Pews before launch"),
-        "subheader": i18n("Tell us what your church actually needs. This takes about 3 minutes and helps us invite the right churches into early access."),
+        "headline": i18n("Could your church help shape Pews?"),
+        "subheader": i18n("Eight focused questions about your church, current tools, and where the week breaks down. About 2 minutes."),
         "buttonLabel": i18n("Start the early-access fit check"),
         "timeToFinish": True,
         "showResponseCount": False,
@@ -219,8 +222,8 @@ BODY = {
         {
             "id": stable_id("done"),
             "type": "endScreen",
-            "headline": i18n("You are on the early-access list."),
-            "subheader": i18n("We will review your answers and follow up when there is a useful next step. No generic drip campaign."),
+            "headline": i18n("Thanks. Petie will read this."),
+            "subheader": i18n("If your church looks like a useful fit for the first group, he will follow up personally to learn more. No automatic enrollment or generic drip campaign."),
         }
     ],
     "hiddenFields": {

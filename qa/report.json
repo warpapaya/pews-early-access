@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://127.0.0.1:19432/",
+  "baseUrl": "https://warpapaya.github.io/pews-early-access/",
   "formUrl": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq",
   "viewports": [
     {
@@ -10,9 +10,11 @@
         "innerWidth": 1440,
         "clientWidth": 1440,
         "scrollWidth": 1440,
-        "title": "Pews — Church work, held together",
+        "title": "Pews — Hold the church week together",
         "h1": "Hold the week together.\nWithout losing the why.",
-        "iframeSrc": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&brand=pews&page=landing&placement=inline_form&intent=beta_early_access"
+        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&utm_source=qa&utm_campaign=marketing_ready",
+        "robots": "index,follow,max-image-preview:large",
+        "canonical": "https://warpapaya.github.io/pews-early-access/"
       },
       "careVisible": true,
       "givingVisible": true,
@@ -31,9 +33,11 @@
         "innerWidth": 1024,
         "clientWidth": 1024,
         "scrollWidth": 1024,
-        "title": "Pews — Church work, held together",
+        "title": "Pews — Hold the church week together",
         "h1": "Hold the week together.\nWithout losing the why.",
-        "iframeSrc": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&brand=pews&page=landing&placement=inline_form&intent=beta_early_access"
+        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&utm_source=qa&utm_campaign=marketing_ready",
+        "robots": "index,follow,max-image-preview:large",
+        "canonical": "https://warpapaya.github.io/pews-early-access/"
       },
       "careVisible": true,
       "givingVisible": true,
@@ -52,9 +56,11 @@
         "innerWidth": 390,
         "clientWidth": 390,
         "scrollWidth": 390,
-        "title": "Pews — Church work, held together",
+        "title": "Pews — Hold the church week together",
         "h1": "Hold the week together.\nWithout losing the why.",
-        "iframeSrc": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&brand=pews&page=landing&placement=inline_form&intent=beta_early_access"
+        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&utm_source=qa&utm_campaign=marketing_ready",
+        "robots": "index,follow,max-image-preview:large",
+        "canonical": "https://warpapaya.github.io/pews-early-access/"
       },
       "careVisible": true,
       "givingVisible": true,
@@ -71,7 +77,7 @@
     "metrics": {
       "innerWidth": 390,
       "scrollWidth": 390,
-      "title": "Help shape Pews before launch | Formbricks"
+      "title": "Could your church help shape Pews? | Formbricks"
     },
     "hasWelcomeCopy": true,
     "hasStartButton": true,

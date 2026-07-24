@@ -5,6 +5,9 @@ import path from 'node:path';
 
 const baseUrl = process.env.PEWS_LANDING_URL || 'http://127.0.0.1:19432/';
 const formUrl = 'https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq';
+const attributedUrl = new URL(baseUrl);
+attributedUrl.searchParams.set('utm_source', 'qa');
+attributedUrl.searchParams.set('utm_campaign', 'marketing_ready');
 const outDir = path.resolve('qa/screenshots');
 await fs.mkdir(outDir, { recursive: true });
 
@@ -29,9 +32,9 @@ for (const viewport of viewports) {
   page.on('pageerror', (error) => pageErrors.push(error.message));
   page.on('requestfailed', (request) => failedRequests.push({ url: request.url(), error: request.failure()?.errorText }));
 
-  const response = await page.goto(baseUrl, { waitUntil: 'networkidle', timeout: 60000 });
+  const response = await page.goto(attributedUrl.toString(), { waitUntil: 'networkidle', timeout: 60000 });
   if (!response || response.status() !== 200) report.failures.push(`${viewport.name}: landing HTTP ${response?.status()}`);
-  await page.waitForSelector('iframe[title="Pews early-access fit check"]');
+  await page.waitForSelector('[data-fit-check-link]');
 
   const metrics = await page.evaluate(() => ({
     innerWidth,
@@ -39,10 +42,15 @@ for (const viewport of viewports) {
     scrollWidth: document.documentElement.scrollWidth,
     title: document.title,
     h1: document.querySelector('h1')?.innerText,
-    iframeSrc: document.querySelector('iframe[title="Pews early-access fit check"]')?.src,
+    fitCheckHref: document.querySelector('[data-fit-check-link]')?.href,
+    robots: document.querySelector('meta[name="robots"]')?.content,
+    canonical: document.querySelector('link[rel="canonical"]')?.href,
   }));
   if (metrics.scrollWidth > metrics.innerWidth) report.failures.push(`${viewport.name}: horizontal overflow ${metrics.scrollWidth} > ${metrics.innerWidth}`);
-  if (!metrics.iframeSrc?.includes('cmrz46a4s002e01s3zt5ztqlq')) report.failures.push(`${viewport.name}: incorrect Formbricks embed`);
+  if (!metrics.fitCheckHref?.includes('cmrz46a4s002e01s3zt5ztqlq')) report.failures.push(`${viewport.name}: incorrect fit-check destination`);
+  if (!metrics.fitCheckHref?.includes('utm_source=qa') || !metrics.fitCheckHref?.includes('utm_campaign=marketing_ready')) report.failures.push(`${viewport.name}: attribution not propagated`);
+  if (!metrics.robots?.includes('index')) report.failures.push(`${viewport.name}: page is not indexable`);
+  if (!metrics.canonical?.startsWith('https://')) report.failures.push(`${viewport.name}: canonical missing`);
 
   await page.getByRole('tab', { name: 'Care & follow-ups' }).click();
   const careVisible = await page.locator('#panel-care').isVisible();
@@ -71,7 +79,7 @@ for (const viewport of viewports) {
   if (serious.length) report.failures.push(`${viewport.name}: axe ${serious.map((item) => item.id).join(', ')}`);
 
   await page.screenshot({ path: path.join(outDir, `${viewport.name}-full.png`), fullPage: true });
-  await page.locator('#early-access').screenshot({ path: path.join(outDir, `${viewport.name}-form.png`) });
+  await page.locator('#early-access').screenshot({ path: path.join(outDir, `${viewport.name}-access.png`) });
   report.viewports.push({
     ...viewport,
     metrics,
@@ -103,7 +111,7 @@ for (const viewport of viewports) {
   report.formbricks = {
     status: response?.status(),
     metrics,
-    hasWelcomeCopy: bodyText.includes('Help shape Pews before launch'),
+    hasWelcomeCopy: bodyText.includes('Could your church help shape Pews?'),
     hasStartButton: bodyText.includes('Start the early-access fit check'),
     seriousAxeViolations: serious.map((item) => item.id),
     pageErrors: errors,

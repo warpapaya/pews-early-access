@@ -43,7 +43,7 @@ await page.getByRole('button', { name: 'Next' }).click();
 await page.getByText('Within the next 3 months', { exact: true }).click();
 await page.getByRole('button', { name: 'Next' }).click();
 
-await page.getByText('Yes — if the preferred beta rate and scope make sense', { exact: true }).click();
+await page.getByText('$100–$149 per month', { exact: true }).click();
 await page.getByRole('button', { name: 'Next' }).click();
 
 const fields = await page.locator('input').evaluateAll((inputs) => inputs.map((input) => ({ type: input.type, placeholder: input.placeholder })));
@@ -53,7 +53,7 @@ await textInputs.nth(1).fill('QA');
 await page.locator('input[type="email"]').fill('friday+pews-qa@clearlinelims.com');
 await textInputs.nth(2).fill('Pews Synthetic QA Church');
 await page.getByRole('button', { name: /Submit|Finish|Complete|Next/ }).click();
-await page.getByText('You are on the early-access list.', { exact: true }).waitFor({ timeout: 30000 });
+await page.getByText('Thanks. Petie will read this.', { exact: true }).waitFor({ timeout: 30000 });
 await page.screenshot({ path: 'qa/screenshots/formbricks-submission-proof.png', fullPage: true });
 await context.close();
 await browser.close();
