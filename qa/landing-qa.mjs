@@ -55,9 +55,12 @@ for (const viewport of viewports) {
 
   await page.getByRole('tab', { name: 'Care & follow-ups' }).click();
   const careVisible = await page.locator('#panel-care').isVisible();
-  await page.getByRole('tab', { name: 'Giving visibility' }).click();
+  await page.getByRole('tab', { name: 'Planning Center coexistence' }).click();
   const givingVisible = await page.locator('#panel-giving').isVisible();
   if (!careVisible || !givingVisible) report.failures.push(`${viewport.name}: product tabs did not switch panels`);
+  const pageText = await page.locator('body').innerText();
+  if (!pageText.includes('$39') || !pageText.includes('$399')) report.failures.push(`${viewport.name}: founding price missing`);
+  if (!pageText.includes('Not in this phase') || !pageText.includes('Full Planning Center replacement')) report.failures.push(`${viewport.name}: beta boundary missing`);
 
   const targetIssues = await page.evaluate(() => {
     const candidates = [...document.querySelectorAll('a, button, summary')]

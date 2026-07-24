@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pews brings service planning, volunteer scheduling, people, care follow-ups, giving, and communication into one church operations workspace. Request early access.">
+  <meta name="description" content="Pews gives church teams one weekly operations view across the tools they already use—so owners, follow-ups, volunteer gaps, and care work do not disappear between systems.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#102f3d">
   <link rel="canonical" href="https://warpapaya.github.io/pews-early-access/">
@@ -11,17 +11,17 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pews">
   <meta property="og:url" content="https://warpapaya.github.io/pews-early-access/">
-  <meta property="og:title" content="Pews — Hold the church week together">
-  <meta property="og:description" content="One church operations workspace for the week your ministry carries. Request early access and help shape the beta.">
+  <meta property="og:title" content="Pews — See what needs attention this week">
+  <meta property="og:description" content="A focused church operations layer for follow-through across the tools your team already uses. Founding beta: $39/month.">
   <meta property="og:image" content="https://warpapaya.github.io/pews-early-access/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Pews — church operations, with the mission in view">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Pews — Hold the church week together">
-  <meta name="twitter:description" content="One church operations workspace for the week your ministry carries. Request early access.">
+  <meta name="twitter:title" content="Pews — See what needs attention this week">
+  <meta name="twitter:description" content="A focused church operations layer for follow-through across the tools your team already uses. Founding beta: $39/month.">
   <meta name="twitter:image" content="https://warpapaya.github.io/pews-early-access/social-card.png">
-  <title>Pews — Hold the church week together</title>
+  <title>Pews — See what needs attention this week</title>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +29,7 @@
     "name": "Pews",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Church operations software for service planning, volunteer scheduling, people, care follow-ups, giving, and communication.",
+    "description": "A church operations layer for weekly priorities, owners, volunteer gaps, guest follow-up, and care work across existing ministry tools.",
     "url": "https://warpapaya.github.io/pews-early-access/",
     "creator": {
       "@type": "Organization",
@@ -337,6 +337,19 @@
     .form-fine a, .footer-links a { text-underline-offset: 3px; }
     .beta-boundary { margin-top: 18px; padding: 14px 16px; border-left: 3px solid var(--warm); background: #f9f4ea; color: var(--body); font-size: 12px; line-height: 1.5; }
 
+    .offer { padding: 122px 0; background: var(--white); }
+    .offer-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(54px, 8vw, 112px); align-items: start; }
+    .offer-price { margin: 28px 0 0; font: 500 clamp(64px, 8vw, 94px)/.88 var(--font-display); letter-spacing: -.05em; }
+    .offer-price span { font: 600 14px/1 var(--font-body); letter-spacing: 0; color: var(--muted); }
+    .offer-annual { margin: 13px 0 0; color: var(--body); font-weight: 650; }
+    .offer-lock { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--body); font-size: 14px; }
+    .scope-table { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; }
+    .scope-row { display: grid; grid-template-columns: 160px 1fr; gap: 22px; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+    .scope-row:last-child { border-bottom: 0; }
+    .scope-row strong { font-size: 14px; }
+    .scope-row p { margin: 0; color: var(--body); font-size: 14px; }
+    .scope-row.out { background: #f8f9f6; }
+
     .questions { padding: 110px 0; }
     .questions-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; }
     .questions h2 { margin: 0; font: 500 40px/1 var(--font-display); letter-spacing: -.025em; }
@@ -378,7 +391,7 @@
       .signal-cell:nth-child(2) { border-right: 0; }
       .signal-cell:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
       .workflow { padding: 100px 0; }
-      .workflow-head, .evidence-head, .founder-grid, .access-grid, .questions-grid { grid-template-columns: 1fr; gap: 40px; }
+      .workflow-head, .evidence-head, .founder-grid, .access-grid, .questions-grid, .offer-grid { grid-template-columns: 1fr; gap: 40px; }
       .workflow-head .section-intro, .evidence-head .section-intro { margin-top: 0; }
       .workflow-row { grid-template-columns: 60px .8fr 1.2fr; }
       .proof-panel { grid-template-columns: 1fr; }
@@ -436,6 +449,8 @@
       .early-access { padding: 72px 0; }
       .fit-card { padding: 26px 20px; }
       .fit-meta { grid-template-columns: 1fr; }
+      .offer { padding: 76px 0; }
+      .scope-row { grid-template-columns: 1fr; gap: 7px; padding: 19px; }
       .questions { padding: 72px 0; }
       .questions-grid { gap: 30px; }
       summary { min-height: 76px; }
@@ -456,8 +471,9 @@
     <div class="shell nav-wrap">
       <a class="wordmark" href="#top" aria-label="Pews home">pews<i aria-hidden="true"></i></a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#workflow">The church week</a>
-        <a href="#product">Inside Pews</a>
+        <a href="#workflow">How it works</a>
+        <a href="#product">Beta scope</a>
+        <a href="#pricing">Pricing</a>
         <a href="#story">Why Pews</a>
       </nav>
       <a class="button button-primary header-cta" href="#early-access">Request access</a>
@@ -468,14 +484,14 @@
     <section class="hero" id="top" data-od-id="hero">
       <div class="shell hero-grid">
         <div>
-          <p class="eyebrow">Church operations, with the mission in view</p>
-          <h1>Hold the week together. <em>Without losing the why.</em></h1>
-          <p class="hero-copy">Pews brings services, people, care follow-ups, volunteer scheduling, giving, and communications into one church operations workspace—so ministry leaders can see what needs attention and move the week forward.</p>
+          <p class="eyebrow">The operational layer your church stack is missing</p>
+          <h1>See what needs attention. <em>Before it falls through.</em></h1>
+          <p class="hero-copy">Pews gives church teams one weekly view of the work scattered across Planning Center and the rest of the ministry stack. Keep the tools people depend on. Add clear owners, next actions, and follow-through.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#early-access">Request beta access <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="button button-quiet" href="#product">See the product direction</a>
+            <a class="button button-quiet" href="#pricing">See the founding offer</a>
           </div>
-          <p class="hero-note">Private beta · No payment or commitment to request a conversation · Pricing is not final.</p>
+          <p class="hero-note">Founding Ops Beta · $39/month or $399/year · No transaction fee · Limited first cohort.</p>
         </div>
 
         <div class="product-stage" aria-label="Illustrative Pews product preview with sample data">
@@ -484,7 +500,7 @@
             <aside class="app-sidebar" aria-hidden="true">
               <div class="mini-brand"><span class="mini-mark">p</span> pews</div>
               <div class="mini-nav">
-                <span class="active">This week</span><span>People</span><span>Services</span><span>Scheduling</span><span>Care</span><span>Giving</span><span>Communications</span>
+                <span class="active">This week</span><span>Follow-ups</span><span>People</span><span>Services</span><span>Connected tools</span>
               </div>
             </aside>
             <div class="app-content">
@@ -529,24 +545,24 @@
 
     <section class="signal-strip" aria-label="Pews product principles" data-od-id="principles-strip">
       <div class="signal-grid">
-        <div class="signal-cell intro"><strong>Built for the shape of ministry work.</strong><p>Not another generic business dashboard with church labels added later.</p></div>
-        <div class="signal-cell"><span class="num">01</span><strong>See the week</strong><p>Services, volunteer needs, upcoming events, and useful next actions.</p></div>
-        <div class="signal-cell"><span class="num">02</span><strong>Care with context</strong><p>Follow-ups, notes, ownership, due dates, and the people behind the task.</p></div>
-        <div class="signal-cell"><span class="num">03</span><strong>Keep stewardship visible</strong><p>Giving, funds, donations, and statements live alongside the rest of church operations.</p></div>
+        <div class="signal-cell intro"><strong>Start by making the current stack work better.</strong><p>No forced migration. No pretend all-in-one overhaul on day one.</p></div>
+        <div class="signal-cell"><span class="num">01</span><strong>See the week</strong><p>Volunteer gaps, guest follow-ups, care work, and upcoming ministry moments.</p></div>
+        <div class="signal-cell"><span class="num">02</span><strong>Give work an owner</strong><p>Turn scattered signals into named next actions, due dates, and accountable follow-through.</p></div>
+        <div class="signal-cell"><span class="num">03</span><strong>Keep what already works</strong><p>Begin beside Planning Center and other tools. Replace pieces only when Pews earns it.</p></div>
       </div>
     </section>
 
     <section class="workflow" id="workflow" data-od-id="weekly-workflow">
       <div class="shell">
         <div class="workflow-head">
-          <div><p class="eyebrow">One connected church week</p><h2 class="section-title">Software should clarify the work—not become more of it.</h2></div>
-          <p class="section-intro">Pews is being shaped around recurring ministry rhythms: preparing services, filling volunteer needs, following up with people, communicating clearly, and keeping stewardship work in view.</p>
+          <div><p class="eyebrow">One connected church week</p><h2 class="section-title">The first job is not replacing software. It is closing the gaps between it.</h2></div>
+          <p class="section-intro">The founding beta is deliberately narrow: surface the week, turn signals into owned work, and help church teams follow through without abandoning familiar systems.</p>
         </div>
         <div class="workflow-list">
-          <article class="workflow-row"><span class="index">01 / Plan</span><h3>Prepare the service</h3><p>Create and copy services, work from templates, manage service status, and keep songs and teams close to the plan.</p></article>
-          <article class="workflow-row"><span class="index">02 / Staff</span><h3>Surface the gaps</h3><p>Review unfilled volunteer positions by date and team, search for people, and assign the work that still needs an owner.</p></article>
-          <article class="workflow-row"><span class="index">03 / Care</span><h3>Carry the follow-up</h3><p>Track visitor, prayer, pastoral-care, hospital, counseling, membership, and general follow-ups from new through completed.</p></article>
-          <article class="workflow-row"><span class="index">04 / Steward</span><h3>Keep the operations honest</h3><p>Manage people records, giving and funds, communications, check-ins, groups, events, and reporting within the same product.</p></article>
+          <article class="workflow-row"><span class="index">01 / See</span><h3>Open the week</h3><p>Start with a calm briefing of what is upcoming, unresolved, overdue, or waiting for a person—not a wall of disconnected dashboards.</p></article>
+          <article class="workflow-row"><span class="index">02 / Own</span><h3>Name the next action</h3><p>Give volunteer gaps, guest responses, and care follow-ups an owner, a due date, and enough context to act.</p></article>
+          <article class="workflow-row"><span class="index">03 / Finish</span><h3>Carry the follow-through</h3><p>Move work from new to in progress to completed without losing the person, notes, or ministry context behind it.</p></article>
+          <article class="workflow-row"><span class="index">04 / Learn</span><h3>Improve one real week at a time</h3><p>Use the beta to discover which connected workflow actually saves your team time before anyone talks about replacing more of your stack.</p></article>
         </div>
       </div>
     </section>
@@ -554,52 +570,71 @@
     <section class="evidence" id="product" data-od-id="product-evidence">
       <div class="shell">
         <div class="evidence-head">
-          <div><p class="eyebrow">Grounded in the product</p><h2 class="section-title">A look at the work Pews is being built to support.</h2></div>
-          <p class="section-intro">These previews reflect workflows represented in the current product direction. Names and values are illustrative—not customer data, testimonials, or proof of production use.</p>
+          <div><p class="eyebrow">First-phase beta scope</p><h2 class="section-title">An operational layer first. A broader platform only when it earns the right.</h2></div>
+          <p class="section-intro">These previews show the narrow workflow the founding cohort will help shape. Interfaces and sample values are illustrative—not live customer data or a claim that every connection is production-ready.</p>
         </div>
 
         <div class="proof-tabs" role="tablist" aria-label="Product previews">
-          <button class="proof-tab" role="tab" aria-selected="true" aria-controls="panel-services" id="tab-services" data-panel="panel-services">Service planning</button>
+          <button class="proof-tab" role="tab" aria-selected="true" aria-controls="panel-services" id="tab-services" data-panel="panel-services">Weekly operations</button>
           <button class="proof-tab" role="tab" aria-selected="false" aria-controls="panel-care" id="tab-care" data-panel="panel-care" tabindex="-1">Care & follow-ups</button>
-          <button class="proof-tab" role="tab" aria-selected="false" aria-controls="panel-giving" id="tab-giving" data-panel="panel-giving" tabindex="-1">Giving visibility</button>
+          <button class="proof-tab" role="tab" aria-selected="false" aria-controls="panel-giving" id="tab-giving" data-panel="panel-giving" tabindex="-1">Planning Center coexistence</button>
         </div>
 
         <div class="proof-panel active" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
-          <div class="proof-copy"><div class="source-note">Current product routes: services + scheduling needs</div><h3>Plan the gathering. See what is still open.</h3><p>A composed workspace for service plans and the volunteer positions that need attention before the week gets away.</p><ul><li>Service types, dates, times, statuses, and templates</li><li>Upcoming services and reusable plans</li><li>Unfilled volunteer positions grouped by date and team</li></ul></div>
+          <div class="proof-copy"><div class="source-note">Founding beta focus: the week at a glance</div><h3>See the exceptions, not just the database.</h3><p>A composed weekly briefing for the work most likely to disappear between meetings, inboxes, spreadsheets, and ministry systems.</p><ul><li>Upcoming services and unresolved volunteer gaps</li><li>New guest and connection-card follow-up</li><li>Care work that is overdue, due soon, or unassigned</li></ul></div>
           <div class="proof-ui" aria-label="Illustrative service planning interface with sample data">
-            <div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Sunday service</h4><span>Planning</span></div><div class="ui-section-label">Order</div><div class="ui-row"><div><strong>Welcome & opening</strong><small>Service item</small></div><span class="ui-pill good">Ready</span></div><div class="ui-row"><div><strong>Music set</strong><small>Song library connected to the plan</small></div><span class="ui-pill good">Ready</span></div><div class="ui-row"><div><strong>Volunteer teams</strong><small>Assignments and open positions</small></div><span class="ui-pill">Needs review</span></div><div class="ui-section-label">Readiness</div><div class="ui-bars"><div class="ui-bar-line"><span>Plan</span><div class="ui-bar"><i style="width:100%"></i></div><span>Ready</span></div><div class="ui-bar-line"><span>Teams</span><div class="ui-bar"><i style="width:66%"></i></div><span>Open</span></div></div></div></div>
+            <div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>This week</h4><span>3 need attention</span></div><div class="ui-section-label">Owned work</div><div class="ui-row"><div><strong>Sunday hospitality gap</strong><small>Service volunteer need · Unassigned</small></div><span class="ui-pill">Needs owner</span></div><div class="ui-row"><div><strong>Welcome new family</strong><small>Guest follow-up · Due Thursday</small></div><span class="ui-pill good">Assigned</span></div><div class="ui-row"><div><strong>Pastoral care check-in</strong><small>Care follow-up · Waiting on response</small></div><span class="ui-pill good">In progress</span></div><div class="ui-section-label">Week health</div><div class="ui-bars"><div class="ui-bar-line"><span>Owned</span><div class="ui-bar"><i style="width:78%"></i></div><span>Most</span></div><div class="ui-bar-line"><span>Due soon</span><div class="ui-bar"><i style="width:38%"></i></div><span>3</span></div></div></div></div>
           </div>
         </div>
 
         <div class="proof-panel" id="panel-care" role="tabpanel" aria-labelledby="tab-care" hidden>
-          <div class="proof-copy"><div class="source-note">Current product route: care</div><h3>Keep a human thread through every follow-up.</h3><p>Care work has a person, an owner, a priority, a due date, a status, and the notes that help the next conversation begin with context.</p><ul><li>Visitor, prayer, pastoral-care, and membership follow-ups</li><li>Ownership, priority, due dates, and overdue state</li><li>Notes history and clear status progression</li></ul></div>
+          <div class="proof-copy"><div class="source-note">Founding beta focus: follow-through with context</div><h3>Keep a human thread through every follow-up.</h3><p>Care and guest work keeps the person, owner, due date, status, and notes together so the next conversation begins with context.</p><ul><li>Guest, prayer, pastoral-care, and membership follow-ups</li><li>Ownership, due dates, waiting state, and overdue cues</li><li>Notes history and clear progress from new to completed</li></ul></div>
           <div class="proof-ui" aria-label="Illustrative care follow-up board with sample data"><div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Care & follow-ups</h4><span>Sample board</span></div><div class="care-columns"><div class="care-column"><strong>NEW</strong><div class="care-task"><strong>Welcome new family</strong><span>Visitor follow-up · Due this week</span></div><div class="care-task"><strong>Prayer response</strong><span>Assigned · Medium priority</span></div></div><div class="care-column"><strong>IN PROGRESS</strong><div class="care-task"><strong>Pastoral care check-in</strong><span>Notes added · In progress</span></div></div><div class="care-column"><strong>COMPLETED</strong><div class="care-task"><strong>Membership follow-up</strong><span>Completed · Notes retained</span></div></div></div></div></div></div>
         </div>
 
         <div class="proof-panel" id="panel-giving" role="tabpanel" aria-labelledby="tab-giving" hidden>
-          <div class="proof-copy"><div class="source-note">Current product routes: giving, funds, donations, statements</div><h3>See stewardship work in the same operational picture.</h3><p>Giving is not presented as theater. Pews models donation records, funds, statements, recent activity, trends, and the setup states teams need to manage.</p><ul><li>Donation recording and recent donation activity</li><li>Fund breakdown and giving trend views</li><li>Giving statements and configuration states</li></ul></div>
-          <div class="proof-ui" aria-label="Illustrative giving overview with sample data"><div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Giving overview</h4><span>Sample structure</span></div><div class="ui-section-label">Fund activity</div><div class="ui-bars"><div class="ui-bar-line"><span>General</span><div class="ui-bar"><i style="width:78%"></i></div><span>Share</span></div><div class="ui-bar-line"><span>Outreach</span><div class="ui-bar"><i style="width:47%"></i></div><span>Share</span></div><div class="ui-bar-line"><span>Care</span><div class="ui-bar"><i style="width:29%"></i></div><span>Share</span></div></div><div class="ui-section-label">Operational paths</div><div class="ui-row"><div><strong>Record a donation</strong><small>Cash, check, and tracked gifts</small></div><span class="ui-pill good">Available</span></div><div class="ui-row"><div><strong>Manage funds</strong><small>Fund setup and breakdown</small></div><span class="ui-pill good">Available</span></div><div class="ui-row"><div><strong>Prepare statements</strong><small>Giving statement workflow</small></div><span class="ui-pill good">Available</span></div></div></div></div>
+          <div class="proof-copy"><div class="source-note">Founding beta direction: coexist before replacement</div><h3>Planning Center stays in place.</h3><p>The initial goal is a read-oriented connection that helps Pews surface useful operational signals without forcing a risky migration or retraining volunteers.</p><ul><li>Begin with selected services, people, and scheduling signals</li><li>Keep source records in the system your team already trusts</li><li>Add Pews-owned actions and follow-through beside them</li></ul></div>
+          <div class="proof-ui" aria-label="Illustrative connected tools overview with sample data"><div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Connected tools</h4><span>Illustrative</span></div><div class="ui-section-label">Source posture</div><div class="ui-row"><div><strong>Planning Center</strong><small>Selected read-oriented signals for the beta</small></div><span class="ui-pill">Beta setup</span></div><div class="ui-row"><div><strong>Pews follow-ups</strong><small>Owners, due dates, status, and notes</small></div><span class="ui-pill good">Pews-owned</span></div><div class="ui-row"><div><strong>Existing church tools</strong><small>Remain in place unless a later workflow earns replacement</small></div><span class="ui-pill good">Kept</span></div><div class="ui-section-label">Boundary</div><div class="ui-bars"><div class="ui-bar-line"><span>Read source</span><div class="ui-bar"><i style="width:72%"></i></div><span>Initial</span></div><div class="ui-bar-line"><span>Replace tools</span><div class="ui-bar"><i style="width:10%"></i></div><span>Later</span></div></div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer" id="pricing" data-od-id="founding-offer">
+      <div class="shell offer-grid">
+        <div>
+          <p class="eyebrow">Founding Ops Beta</p>
+          <h2 class="section-title">One useful layer. One church-wide price.</h2>
+          <p class="section-intro">The first cohort is paying for a focused operational outcome—not a theoretical all-in-one suite.</p>
+          <div class="offer-price">$39 <span>/ month</span></div>
+          <p class="offer-annual">or $399 prepaid for one year</p>
+          <p class="offer-lock"><strong>Founding-rate protection:</strong> participating churches keep this Ops rate for 24 months after general availability, subject to the agreed beta terms. Cancel before the next billing period.</p>
+        </div>
+        <div class="scope-table" aria-label="Founding Ops Beta scope">
+          <div class="scope-row"><strong>Included</strong><p>Weekly operations view, owned follow-ups, care and guest workflows, service and volunteer-gap visibility, normal staff and volunteer access, and guided cohort onboarding.</p></div>
+          <div class="scope-row"><strong>Connection posture</strong><p>Planning Center and other trusted systems stay in place. The beta starts with selected read-oriented connections where setup and source access allow.</p></div>
+          <div class="scope-row"><strong>Usage pricing</strong><p>No Pews transaction fee in this phase. Pass-through messaging, payment-processing, or third-party costs are not included unless separately agreed.</p></div>
+          <div class="scope-row out"><strong>Not in this phase</strong><p>Full Planning Center replacement, native worship planning, check-in hardware, donation processing, accounting, mass messaging, broad migration, or a finished member app.</p></div>
         </div>
       </div>
     </section>
 
     <section class="founder" id="story" data-od-id="founder-story">
       <div class="shell founder-grid">
-        <aside class="founder-aside"><div class="founder-rule" aria-hidden="true"></div><p>Pews is being built from lived ministry experience and twelve years in technology—not from a distance from church operations.</p></aside>
-        <div><p class="eyebrow">Why this product</p><blockquote class="founder-quote">“Church software should respect both the people doing the work and the mission funds paying for it.”</blockquote><div class="founder-body"><p>I spent years as a worship pastor before moving into technology. That made the weekly reality concrete: plans change, volunteers need clarity, people need care, and the administrative work never stays in one lane.</p><p>After twelve years in technology, those lessons are coming back together in Pews: useful operational discipline without asking churches to buy complexity they do not need—or divert unreasonable resources away from the mission.</p></div><p class="founder-signoff">Petie Clark<span>Founder of Pews · former worship pastor · technology leader</span></p></div>
+        <aside class="founder-aside"><div class="founder-rule" aria-hidden="true"></div><p>Pews is being built from lived ministry experience and twelve years in technology—not from a distance from the church week.</p></aside>
+        <div><p class="eyebrow">Why this approach</p><blockquote class="founder-quote">“Churches do not need another rip-and-replace project. They need fewer dropped handoffs this week.”</blockquote><div class="founder-body"><p>I spent years as a worship pastor before moving into technology. The real friction was rarely a missing database field. It was the handoff between Sunday plans, volunteer needs, guest responses, care conversations, and the people expected to remember all of it.</p><p>Pews starts there. It sits above the current stack, makes unresolved work visible, and gives each next action an owner. If it later replaces a module, that should happen because it proved the value—not because a roadmap slide demanded it.</p></div><p class="founder-signoff">Petie Clark<span>Founder of Pews · former worship pastor · technology leader</span></p></div>
       </div>
     </section>
 
     <section class="early-access" id="early-access" data-od-id="early-access-form">
       <div class="shell access-grid">
-        <div class="access-copy"><p class="eyebrow">Private beta</p><h2 class="section-title">Help shape software around the week you actually carry.</h2><p class="section-intro">Pews is looking for a small first group of church leaders willing to show where the week breaks down, evaluate focused workflows, and speak plainly about what would—or would not—earn a place in their ministry.</p><ul class="access-points"><li>Built for pastors, worship leaders, executive pastors, administrators, and ministry operators</li><li>Start with a fit conversation, not a canned sales demo</li><li>If there is a fit, we will agree on a narrow beta scope before asking your church to use it</li></ul><p class="rate-note">Pews is intended to be a paid product. The fit check asks for budget context, not a commitment to pricing that has not been finalized.</p></div>
+        <div class="access-copy"><p class="eyebrow">Founding cohort</p><h2 class="section-title">Help shape the layer between your systems and your actual week.</h2><p class="section-intro">We are looking for a small group of churches already feeling the cost of scattered follow-through and willing to test a narrow operational workflow beside their current tools.</p><ul class="access-points"><li>Best fit: a church already using Planning Center plus spreadsheets, inboxes, forms, or task tools to carry the gaps</li><li>Begin with one real weekly workflow and a named church-side owner</li><li>Give direct feedback on what saves time, what creates risk, and what should not be built yet</li></ul><p class="rate-note">The fit check is free. If both sides agree to begin the Founding Ops Beta, the published cohort price is $39/month or $399 prepaid annually.</p></div>
 
         <div class="fit-card">
           <h3>Is your church a fit for the first group?</h3>
-          <p>Tell us where your current tools create friction. Petie will review each response and follow up personally when there is a useful next step.</p>
+          <p>Tell us where your current tools create friction. We will review each response and follow up when there is a useful next step.</p>
           <div class="fit-meta" aria-label="Fit check details">
-            <div><strong>About 2 minutes</strong><span>Eight focused questions about your church and current workflow.</span></div>
-            <div><strong>No sales trap</strong><span>No payment, automatic enrollment, or commitment to an unknown price.</span></div>
+            <div><strong>About 2 minutes</strong><span>A short fit check about your church and current workflow.</span></div>
+            <div><strong>No sales trap</strong><span>No payment or automatic enrollment. You will see scope before any beta agreement.</span></div>
           </div>
           <a class="button button-primary" data-fit-check-link href="https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&amp;page=landing&amp;placement=fit_card&amp;intent=beta_early_access">Start the early-access fit check <span class="arrow" aria-hidden="true">→</span></a>
           <p class="form-fine">By submitting, you ask Pews to contact you about early access. See the <a href="privacy.html">privacy notice</a>. Participation and timing depend on fit and product readiness.</p>
@@ -610,9 +645,11 @@
 
     <section class="questions" data-od-id="questions">
       <div class="shell questions-grid"><div><p class="eyebrow">Before you request access</p><h2>Clear answers, while the product is still early.</h2></div><div class="faq">
-        <details><summary>What will the beta cost?</summary><p>Pricing and the first beta scope are still being validated. Pews is intended to be a paid product, but requesting a conversation does not commit your church to a price. Any scope, timing, and cost will be clear before participation begins.</p></details>
-        <details><summary>What parts of church work is Pews exploring?</summary><p>The current product direction spans people and households, services and songs, volunteer scheduling, care follow-ups, giving and statements, communications, check-ins, groups, events, prayer, media, sermons, streaming, rooms, reports, and administrative settings. The first private-beta scope will be narrower and agreed with each participating church.</p></details>
-        <details><summary>What happens after I submit?</summary><p>Petie will review your answers. If your church looks like a useful fit for the first group, he will follow up to learn more and agree on a narrow evaluation. Submission is a request for that conversation—not a guarantee of access, timing, or a particular feature set.</p></details>
+        <details><summary>What will the Founding Ops Beta cost?</summary><p>$39 per month or $399 prepaid for one year. Requesting access is free and does not enroll or charge your church. Scope, start date, billing, data access, and exit terms will be agreed before participation begins.</p></details>
+        <details><summary>Is this a Planning Center replacement?</summary><p>Not in the first phase. Planning Center stays in place. Pews is being tested as an operational layer that can surface selected signals and carry Pews-owned follow-ups. Broader replacement is a later decision, workflow by workflow.</p></details>
+        <details><summary>What is actually in the first phase?</summary><p>A weekly operations view, owners and due dates, guest and care follow-ups, service and volunteer-gap visibility, and limited read-oriented connection work where source access allows. The exact first workflow is agreed with each church.</p></details>
+        <details><summary>What is explicitly out of scope?</summary><p>Full migration, donation processing, accounting, check-in hardware, native worship planning, mass messaging, and a finished member app are not part of the Founding Ops Beta unless separately added and proven later.</p></details>
+        <details><summary>What happens after I submit?</summary><p>We will review your answers. If the church looks like a useful fit for the first cohort, we will follow up to understand one concrete weekly workflow and agree on a bounded evaluation. Submission is a request for that conversation—not a guarantee of access or timing.</p></details>
       </div></div>
     </section>
   </main>
