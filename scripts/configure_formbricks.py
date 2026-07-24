@@ -79,7 +79,7 @@ def contact_info() -> dict:
     return {
         "id": stable_id("contact"),
         "type": "contactInfo",
-        "headline": i18n("Where should Petie follow up?"),
+        "headline": i18n("Where should we follow up?"),
         "subheader": i18n("Clearline Technology Methods operates Pews. No automatic enrollment or generic newsletter; these details are used only for Pews research and follow-up."),
         "required": True,
         "firstName": field(True, True, "First name"),
