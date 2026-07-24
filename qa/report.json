@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://127.0.0.1:19432/",
+  "baseUrl": "https://warpapaya.github.io/pews-early-access/",
   "formUrl": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq",
   "viewports": [
     {
@@ -12,7 +12,7 @@
         "scrollWidth": 1440,
         "title": "Pews — Hold the church week together",
         "h1": "Hold the week together.\nWithout losing the why.",
-        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&landing_page=http%3A%2F%2F127.0.0.1%3A19432%2F&utm_source=qa&utm_campaign=marketing_ready",
+        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&landing_page=https%3A%2F%2Fwarpapaya.github.io%2Fpews-early-access%2F&utm_source=qa&utm_campaign=marketing_ready",
         "robots": "index,follow,max-image-preview:large",
         "canonical": "https://warpapaya.github.io/pews-early-access/"
       },
@@ -35,7 +35,7 @@
         "scrollWidth": 1024,
         "title": "Pews — Hold the church week together",
         "h1": "Hold the week together.\nWithout losing the why.",
-        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&landing_page=http%3A%2F%2F127.0.0.1%3A19432%2F&utm_source=qa&utm_campaign=marketing_ready",
+        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&landing_page=https%3A%2F%2Fwarpapaya.github.io%2Fpews-early-access%2F&utm_source=qa&utm_campaign=marketing_ready",
         "robots": "index,follow,max-image-preview:large",
         "canonical": "https://warpapaya.github.io/pews-early-access/"
       },
@@ -58,7 +58,7 @@
         "scrollWidth": 390,
         "title": "Pews — Hold the church week together",
         "h1": "Hold the week together.\nWithout losing the why.",
-        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&landing_page=http%3A%2F%2F127.0.0.1%3A19432%2F&utm_source=qa&utm_campaign=marketing_ready",
+        "fitCheckHref": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?brand=pews&page=landing&placement=fit_card&intent=beta_early_access&landing_page=https%3A%2F%2Fwarpapaya.github.io%2Fpews-early-access%2F&utm_source=qa&utm_campaign=marketing_ready",
         "robots": "index,follow,max-image-preview:large",
         "canonical": "https://warpapaya.github.io/pews-early-access/"
       },
