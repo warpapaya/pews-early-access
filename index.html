@@ -37,7 +37,7 @@
     }
   }
   </script>
-  <script defer data-domain="pews.app" src="https://analytics.clarktechmedia.com/js/script.js"></script>
+
   <style>
     :root {
       --ink: #102f3d;
@@ -661,9 +661,6 @@
       });
       document.querySelectorAll('[data-fit-check-link]').forEach((link) => {
         link.href = fitCheckUrl.toString();
-        link.addEventListener('click', () => {
-          if (typeof window.plausible === 'function') window.plausible('Fit Check Started');
-        });
       });
     })();
   </script>
