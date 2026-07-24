@@ -34,9 +34,9 @@ Hey [Name]—I’m building Pews, a church-operations product shaped by my years
 
 The idea is to help churches hold services, volunteers, people, care follow-ups, giving, and communication together without adding another pile of disconnected tools.
 
-I’m looking for a small first group of church leaders who will tell me where the week actually breaks down—and whether this is worth building further. Would you take a look and complete the two-minute fit check if the problem feels familiar?
+I’m talking with a small group of church leaders to learn where the week actually breaks down. What is the one recurring workflow that creates the most repeat work or dropped handoffs at [Church]?
 
-[tracked link]
+A one-line reply is more useful than a polite form completion. If this is relevant and you prefer the structured version, the two-minute fit check is here: [tracked link]
 
 An honest “this is not a problem for us” is useful too. I’m trying to learn, not manufacture a waitlist.
 
@@ -44,7 +44,7 @@ An honest “this is not a problem for us” is useful too. I’m trying to lear
 
 ## Short text version
 
-Hey [Name]—I’m building a church-operations product called Pews, drawing on my years in worship ministry and tech. I’m looking for a few church leaders to tell me where their weekly workflow actually breaks down. Would you take a look? The fit check is about two minutes, and an honest “not for us” is useful: [tracked link]
+Hey [Name]—I’m building a church-operations product called Pews, drawing on my years in worship ministry and tech. What is the one weekly handoff that creates the most repeat work or dropped follow-up at your church? A one-line reply is genuinely useful. If you prefer the structured version, the fit check is about two minutes: [tracked link]
 
 ## Warm-introduction request
 
@@ -54,7 +54,7 @@ I’m validating Pews, a church-operations product for services, volunteers, peo
 
 Send four to six days later, then stop unless they engage:
 
-Quick follow-up on Pews. I’m keeping the first group small and would value your honest read. If church operations are not your area, no reply needed. If they are, here is the two-minute fit check: [tracked link]
+One concrete follow-up on Pews: is the bigger burden currently planning and scheduling, keeping people records current, guest or care follow-up, giving and reporting, or too many disconnected tools? A one-line reply is enough. If you prefer, the two-minute fit check is here: [tracked link]
 
 ## Founder-post draft
 

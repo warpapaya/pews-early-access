@@ -655,6 +655,13 @@
       fitCheckUrl.searchParams.set('page', 'landing');
       fitCheckUrl.searchParams.set('placement', 'fit_card');
       fitCheckUrl.searchParams.set('intent', 'beta_early_access');
+      fitCheckUrl.searchParams.set('landing_page', `${window.location.origin}${window.location.pathname}`.slice(0, 160));
+      if (document.referrer) {
+        try {
+          const referrer = new URL(document.referrer);
+          fitCheckUrl.searchParams.set('initial_referrer', `${referrer.origin}${referrer.pathname}`.slice(0, 160));
+        } catch (_) {}
+      }
       allowedAttribution.forEach((key) => {
         const value = pageParams.get(key);
         if (value) fitCheckUrl.searchParams.set(key, value.slice(0, 160));

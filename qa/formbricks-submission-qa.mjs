@@ -28,7 +28,9 @@ for (const choice of ['Planning services and worship', 'Scheduling volunteers', 
 }
 await page.getByRole('button', { name: 'Next' }).click();
 
-await page.getByText('A mix of several tools', { exact: true }).click();
+for (const choice of ['Planning Center', 'Spreadsheets, forms, or shared documents']) {
+  await page.getByText(choice, { exact: true }).click();
+}
 await page.getByRole('button', { name: 'Next' }).click();
 
 await page.getByText('100–249', { exact: true }).click();

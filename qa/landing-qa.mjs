@@ -49,6 +49,7 @@ for (const viewport of viewports) {
   if (metrics.scrollWidth > metrics.innerWidth) report.failures.push(`${viewport.name}: horizontal overflow ${metrics.scrollWidth} > ${metrics.innerWidth}`);
   if (!metrics.fitCheckHref?.includes('cmrz46a4s002e01s3zt5ztqlq')) report.failures.push(`${viewport.name}: incorrect fit-check destination`);
   if (!metrics.fitCheckHref?.includes('utm_source=qa') || !metrics.fitCheckHref?.includes('utm_campaign=marketing_ready')) report.failures.push(`${viewport.name}: attribution not propagated`);
+  if (!metrics.fitCheckHref?.includes('landing_page=')) report.failures.push(`${viewport.name}: landing-page attribution missing`);
   if (!metrics.robots?.includes('index')) report.failures.push(`${viewport.name}: page is not indexable`);
   if (!metrics.canonical?.startsWith('https://')) report.failures.push(`${viewport.name}: canonical missing`);
 
