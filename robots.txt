@@ -1,0 +1,6 @@
+# Allow all pages for search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pews.church/sitemap.xml

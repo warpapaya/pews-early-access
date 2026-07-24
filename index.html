@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pews is church operations software shaped around the work of ministry. Request early access to the beta.">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Pews — Church work, held together</title>
+  <style>
+    :root {
+      --ink: #102f3d;
+      --ink-deep: #09232d;
+      --paper: #f7f8f4;
+      --white: #ffffff;
+      --mist: #edf2ed;
+      --line: #ced9d2;
+      --line-dark: rgba(255,255,255,.16);
+      --body: #435b62;
+      --muted: #61737a;
+      --accent: #1a6a64;
+      --accent-hover: #145650;
+      --accent-soft: #dcece5;
+      --warm: #e9aa65;
+      --success: #236849;
+      --warning: #9c531d;
+      --danger: #9b3e3e;
+      --focus: #e09a4c;
+      --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --font-body: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+      --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --max: 1240px;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --shadow: 0 24px 70px rgba(9, 35, 45, .13);
+      --ease: cubic-bezier(.2, 0, 0, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; overflow-x: clip; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    img, svg { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+    ::selection { background: var(--accent-soft); color: var(--ink-deep); }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      left: 16px;
+      top: 12px;
+      transform: translateY(-160%);
+      padding: 10px 14px;
+      background: var(--white);
+      color: var(--ink);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+    .skip-link:focus { transform: none; }
+    .shell { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 18px;
+      font: 600 12px/1.2 var(--font-mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .section-title {
+      margin: 0;
+      max-width: 760px;
+      font: 500 clamp(38px, 5vw, 66px)/.98 var(--font-display);
+      letter-spacing: -.03em;
+    }
+    .section-intro { max-width: 620px; margin: 24px 0 0; color: var(--body); font-size: 18px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 19px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 650;
+      font-size: 15px;
+      letter-spacing: .01em;
+      cursor: pointer;
+      transition: background 150ms var(--ease), color 150ms var(--ease), border-color 150ms var(--ease), transform 100ms var(--ease);
+    }
+    .button:active { transform: translateY(1px); }
+    .button-primary { background: var(--accent); color: var(--white); }
+    .button-primary:hover { background: var(--accent-hover); }
+    .button-quiet { border-color: var(--line); background: transparent; color: var(--ink); }
+    .button-quiet:hover { background: var(--white); border-color: #a9bab0; }
+    .arrow { font-size: 18px; line-height: 1; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      background: color-mix(in srgb, var(--paper) 91%, transparent);
+      border-bottom: 1px solid rgba(16,47,61,.09);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .wordmark {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      font: 600 29px/1 var(--font-display);
+      letter-spacing: -.035em;
+    }
+    .wordmark i { width: 6px; height: 6px; margin: 15px 0 0 2px; border-radius: 50%; background: var(--warm); }
+    .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+    .nav-links a { min-height: 44px; display: inline-flex; align-items: center; color: var(--body); text-decoration: none; font-size: 14px; font-weight: 550; }
+    .nav-links a:hover { color: var(--ink); }
+    .header-cta { min-height: 44px; padding: 9px 16px; }
+
+    .hero { padding: clamp(58px, 8vw, 112px) 0 96px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(530px, 1.18fr); align-items: center; gap: clamp(50px, 7vw, 94px); }
+    .hero h1 {
+      margin: 0;
+      max-width: 700px;
+      font: 500 clamp(60px, 7.1vw, 105px)/.88 var(--font-display);
+      letter-spacing: -.045em;
+    }
+    .hero h1 em { display: block; color: var(--accent); font-style: italic; font-weight: 400; }
+    .hero-copy { max-width: 590px; margin: 28px 0 0; color: var(--body); font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .hero-note { max-width: 520px; margin: 16px 0 0; color: var(--muted); font-size: 13px; }
+    .product-stage { position: relative; min-width: 0; }
+    .product-stage::before {
+      content: "";
+      position: absolute;
+      inset: 9% -5% -8% 17%;
+      z-index: -1;
+      border-radius: 44% 56% 39% 61%;
+      background: var(--accent-soft);
+      transform: rotate(-4deg);
+    }
+    .sample-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 10px 18px;
+      color: var(--muted);
+      font: 550 11px/1 var(--font-mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .sample-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--warm); }
+    .app-frame {
+      min-height: 554px;
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      overflow: hidden;
+      border: 1px solid rgba(9,35,45,.16);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transform: rotate(1.25deg);
+    }
+    .app-sidebar { padding: 24px 17px; background: var(--ink-deep); color: #dce9e6; }
+    .mini-brand { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; font-family: var(--font-display); font-size: 18px; }
+    .mini-mark { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 7px; background: var(--accent); color: var(--white); font: 600 15px/1 var(--font-display); }
+    .mini-nav { display: grid; gap: 5px; }
+    .mini-nav span { min-height: 34px; display: flex; align-items: center; gap: 9px; padding: 8px 9px; border-radius: 6px; color: #9fb5b5; font-size: 10px; }
+    .mini-nav span::before { content: ""; width: 12px; height: 12px; border: 1.5px solid currentColor; border-radius: 3px; opacity: .8; }
+    .mini-nav .active { background: rgba(255,255,255,.09); color: var(--white); }
+    .app-content { min-width: 0; padding: 25px 25px 28px; background: #fbfcfa; }
+    .app-top { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 25px; }
+    .app-kicker { color: var(--muted); font-size: 10px; }
+    .app-title { margin: 3px 0 0; font-size: 18px; letter-spacing: -.02em; }
+    .app-avatar { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 10px; font-weight: 700; }
+    .week-bar { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; padding-bottom: 16px; border-bottom: 1px solid #dde5df; }
+    .week-bar h3 { margin: 0; font-size: 26px; letter-spacing: -.035em; }
+    .week-bar p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .week-state { padding: 6px 9px; border-radius: 999px; background: #f8e8d6; color: var(--warning); font-size: 9px; font-weight: 700; }
+    .attention-list { margin-top: 6px; }
+    .attention-row { display: grid; grid-template-columns: 30px minmax(0,1fr) auto; align-items: center; gap: 12px; padding: 14px 2px; border-bottom: 1px solid #e5ebe7; }
+    .row-icon { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; background: var(--mist); color: var(--ink); }
+    .row-icon svg { width: 15px; height: 15px; }
+    .attention-row strong { display: block; font-size: 11px; }
+    .attention-row small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
+    .row-state { color: var(--accent); font-size: 9px; font-weight: 700; }
+    .app-lower { display: grid; grid-template-columns: 1.35fr .65fr; gap: 12px; margin-top: 15px; }
+    .service-strip, .care-strip { padding: 14px; border: 1px solid #dde5df; border-radius: 10px; background: var(--white); }
+    .strip-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 10px; font-size: 9px; font-weight: 700; }
+    .strip-meta { color: var(--muted); font-weight: 500; }
+    .service-line { display: grid; grid-template-columns: 9px minmax(0,1fr) auto; align-items: center; gap: 7px; min-height: 25px; font-size: 8px; color: var(--body); }
+    .service-line::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+    .service-line.ready::before { background: var(--success); }
+    .service-line.needs::before { background: var(--warm); }
+    .care-count { margin-top: 8px; font: 500 33px/1 var(--font-display); }
+    .care-label { margin-top: 6px; color: var(--muted); font-size: 8px; line-height: 1.4; }
+
+    .signal-strip { border-block: 1px solid var(--line); background: var(--white); }
+    .signal-grid { display: grid; grid-template-columns: .9fr 1.1fr 1.1fr 1.1fr; }
+    .signal-cell { min-height: 122px; padding: 26px 28px; border-right: 1px solid var(--line); }
+    .signal-cell:last-child { border-right: 0; }
+    .signal-cell.intro { background: var(--ink); color: var(--white); }
+    .signal-cell .num { display: block; margin-bottom: 13px; color: var(--warning); font: 600 11px/1 var(--font-mono); letter-spacing: .08em; }
+    .signal-cell strong { display: block; font: 500 21px/1.15 var(--font-display); letter-spacing: -.01em; }
+    .signal-cell p { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+    .signal-cell.intro p { color: #bdd0cf; }
+
+    .workflow { padding: 140px 0 120px; }
+    .workflow-head { display: grid; grid-template-columns: .95fr 1.05fr; gap: 80px; align-items: end; margin-bottom: 72px; }
+    .workflow-head .section-intro { margin: 0 0 4px; }
+    .workflow-list { border-top: 1px solid var(--line); }
+    .workflow-row { display: grid; grid-template-columns: 90px .75fr 1.25fr; gap: 30px; align-items: start; padding: 37px 0 39px; border-bottom: 1px solid var(--line); }
+    .workflow-row .index { padding-top: 4px; font: 550 12px/1 var(--font-mono); color: var(--accent); letter-spacing: .07em; }
+    .workflow-row h3 { margin: 0; font: 500 29px/1.08 var(--font-display); letter-spacing: -.02em; }
+    .workflow-row p { max-width: 610px; margin: 0; color: var(--body); }
+
+    .evidence { padding: 112px 0; background: var(--ink-deep); color: var(--white); }
+    .evidence .eyebrow { color: #82c4b8; }
+    .evidence-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: end; }
+    .evidence-head .section-intro { margin: 0; color: #b8caca; }
+    .proof-tabs { display: flex; gap: 4px; margin: 58px 0 18px; padding-bottom: 8px; overflow-x: auto; scrollbar-width: thin; }
+    .proof-tab { min-height: 44px; flex: 0 0 auto; padding: 10px 16px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #9fb5b5; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .proof-tab:hover { color: var(--white); }
+    .proof-tab[aria-selected="true"] { background: rgba(255,255,255,.1); color: var(--white); border-color: var(--line-dark); }
+    .proof-panel { display: none; min-height: 475px; grid-template-columns: .78fr 1.22fr; overflow: hidden; border: 1px solid var(--line-dark); border-radius: 20px; background: #113440; }
+    .proof-panel.active { display: grid; }
+    .proof-copy { padding: clamp(36px, 5vw, 66px); }
+    .proof-copy .source-note { color: #89a7a7; font: 550 11px/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+    .proof-copy h3 { margin: 22px 0 18px; font: 500 clamp(34px, 4vw, 54px)/.98 var(--font-display); letter-spacing: -.03em; }
+    .proof-copy p { max-width: 480px; margin: 0; color: #c4d5d4; font-size: 17px; }
+    .proof-copy ul { margin: 30px 0 0; padding: 0; list-style: none; }
+    .proof-copy li { display: flex; gap: 12px; margin: 12px 0; color: #dce7e5; font-size: 14px; }
+    .proof-copy li::before { content: ""; width: 14px; height: 1px; margin-top: 11px; flex: 0 0 auto; background: var(--warm); }
+    .proof-ui { min-width: 0; padding: 38px; background: #ecf1ec; color: var(--ink); }
+    .ui-window { height: 100%; overflow: hidden; border-radius: 14px; background: var(--white); box-shadow: 0 20px 50px rgba(0,0,0,.18); }
+    .ui-window-top { min-height: 47px; display: flex; align-items: center; gap: 6px; padding: 0 16px; border-bottom: 1px solid #e0e7e2; }
+    .ui-window-top i { width: 7px; height: 7px; border-radius: 50%; background: #d4ddd6; }
+    .ui-window-body { padding: 24px; }
+    .ui-titlebar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .ui-titlebar h4 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+    .ui-titlebar span { padding: 5px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 9px; font-weight: 700; }
+    .ui-section-label { margin: 18px 0 8px; color: var(--muted); font: 600 9px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+    .ui-row { min-height: 50px; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e8ede9; }
+    .ui-row strong { display: block; font-size: 11px; }
+    .ui-row small { color: var(--muted); font-size: 9px; }
+    .ui-pill { padding: 5px 8px; border-radius: 999px; background: #f6e7d6; color: var(--warning); font-size: 8px; font-weight: 700; }
+    .ui-pill.good { background: #e2efe6; color: var(--success); }
+    .ui-bars { display: grid; gap: 12px; margin-top: 24px; }
+    .ui-bar-line { display: grid; grid-template-columns: 72px 1fr 34px; gap: 10px; align-items: center; color: var(--muted); font-size: 9px; }
+    .ui-bar { height: 7px; overflow: hidden; border-radius: 999px; background: #e6ece7; }
+    .ui-bar i { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+    .care-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 20px; }
+    .care-column { min-height: 222px; padding: 11px; border-radius: 9px; background: #f4f6f3; }
+    .care-column > strong { display: block; margin-bottom: 10px; color: var(--muted); font-size: 9px; }
+    .care-task { margin-bottom: 8px; padding: 10px; border: 1px solid #dfe6e0; border-radius: 7px; background: var(--white); }
+    .care-task strong { display: block; font-size: 9px; }
+    .care-task span { display: block; margin-top: 5px; color: var(--muted); font-size: 8px; }
+
+    .founder { padding: 130px 0; }
+    .founder-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(70px, 10vw, 145px); align-items: start; }
+    .founder-aside { position: sticky; top: 115px; }
+    .founder-rule { width: 64px; height: 5px; margin: 0 0 28px; background: var(--warm); }
+    .founder-aside p { max-width: 290px; margin: 0; color: var(--muted); font-size: 14px; }
+    .founder-quote { margin: 0; font: 500 clamp(36px, 5vw, 64px)/1.02 var(--font-display); letter-spacing: -.03em; }
+    .founder-body { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .founder-body p { margin: 0; color: var(--body); }
+
+    .early-access { padding: 112px 0; background: var(--accent-soft); }
+    .access-grid { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(60px, 9vw, 120px); align-items: start; }
+    .access-copy .section-title { font-size: clamp(45px, 6vw, 74px); }
+    .access-points { margin: 34px 0 0; padding: 0; list-style: none; }
+    .access-points li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; margin: 17px 0; color: var(--body); }
+    .access-points li::before { content: "↳"; color: var(--accent); font-weight: 700; }
+    .rate-note { margin-top: 31px; padding: 18px 0 0; border-top: 1px solid #b9cec2; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .form-card { padding: clamp(26px, 4vw, 42px); border: 1px solid #b7cdc0; border-radius: 18px; background: var(--white); box-shadow: 0 18px 55px rgba(16,47,61,.08); }
+    .form-card h3 { margin: 0 0 8px; font: 500 31px/1.1 var(--font-display); letter-spacing: -.02em; }
+    .form-card > p { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+    .form-embed { position: relative; height: 690px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #edf5f2; }
+    .form-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .form-fine { margin: 15px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+
+    .questions { padding: 110px 0; }
+    .questions-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; }
+    .questions h2 { margin: 0; font: 500 40px/1 var(--font-display); letter-spacing: -.025em; }
+    .faq { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; list-style: none; cursor: pointer; font-weight: 650; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-size: 24px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { max-width: 680px; margin: -2px 40px 24px 0; color: var(--body); }
+
+    footer { padding: 42px 0; border-top: 1px solid var(--line); background: var(--white); }
+    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .footer-note { color: var(--muted); font-size: 12px; }
+    .footer-cta { min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 4px; font-size: 13px; font-weight: 600; }
+
+    @media (max-width: 1080px) {
+      .hero-grid { grid-template-columns: minmax(0, .82fr) minmax(480px, 1.18fr); gap: 42px; }
+      .hero h1 { font-size: clamp(55px, 7vw, 78px); }
+      .app-frame { min-height: 520px; grid-template-columns: 128px 1fr; }
+      .app-sidebar { padding-inline: 13px; }
+      .app-content { padding: 22px 19px; }
+      .signal-cell { padding-inline: 20px; }
+      .evidence-head, .workflow-head { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .proof-panel { grid-template-columns: .72fr 1.28fr; }
+      .proof-copy { padding: 42px 34px; }
+      .proof-ui { padding: 24px; }
+    }
+
+    @media (max-width: 900px) {
+      .shell { width: min(calc(100% - 36px), var(--max)); }
+      .nav-links { display: none; }
+      .hero { padding: 72px 0 82px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 66px; }
+      .hero-copy { max-width: 660px; }
+      .product-stage { width: min(100%, 700px); margin-left: auto; }
+      .app-frame { min-height: 510px; }
+      .signal-grid { grid-template-columns: 1fr 1fr; }
+      .signal-cell:nth-child(2) { border-right: 0; }
+      .signal-cell:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .workflow { padding: 100px 0; }
+      .workflow-head, .evidence-head, .founder-grid, .access-grid, .questions-grid { grid-template-columns: 1fr; gap: 40px; }
+      .workflow-head .section-intro, .evidence-head .section-intro { margin-top: 0; }
+      .workflow-row { grid-template-columns: 60px .8fr 1.2fr; }
+      .proof-panel { grid-template-columns: 1fr; }
+      .proof-ui { min-height: 390px; }
+      .founder { padding: 100px 0; }
+      .founder-aside { position: static; }
+      .founder-aside p { max-width: 540px; }
+      .early-access { padding: 90px 0; }
+      .questions { padding: 88px 0; }
+    }
+
+    @media (max-width: 620px) {
+      html { scroll-padding-top: 72px; }
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      .site-header { min-height: 64px; }
+      .wordmark { font-size: 27px; }
+      .header-cta { font-size: 13px; padding-inline: 13px; }
+      .hero { padding: 48px 0 64px; }
+      .hero h1 { font-size: clamp(53px, 16vw, 68px); line-height: .91; }
+      .hero-copy { margin-top: 24px; font-size: 17px; }
+      .hero-actions { display: grid; margin-top: 28px; }
+      .hero-actions .button { width: 100%; }
+      .product-stage { margin-top: 4px; }
+      .sample-label { margin-left: 5px; }
+      .app-frame { min-height: 480px; display: block; border-radius: 18px; transform: none; }
+      .app-sidebar { display: none; }
+      .app-content { padding: 19px 15px; }
+      .week-bar { align-items: start; }
+      .week-bar h3 { font-size: 22px; }
+      .attention-row { grid-template-columns: 30px minmax(0,1fr); }
+      .row-state { grid-column: 2; }
+      .app-lower { grid-template-columns: 1fr; }
+      .care-strip { display: none; }
+      .signal-grid { grid-template-columns: 1fr; }
+      .signal-cell { min-height: auto; padding: 24px 22px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .signal-cell:last-child { border-bottom: 0; }
+      .workflow { padding: 78px 0; }
+      .workflow-head { margin-bottom: 42px; }
+      .workflow-row { grid-template-columns: 44px 1fr; gap: 14px; padding: 29px 0; }
+      .workflow-row p { grid-column: 2; }
+      .workflow-row h3 { font-size: 26px; }
+      .evidence { padding: 78px 0; }
+      .proof-tabs { margin-top: 38px; display: grid; grid-template-columns: 1fr; gap: 6px; overflow: visible; }
+      .proof-tab { width: 100%; text-align: left; }
+      .proof-panel { min-height: 0; }
+      .proof-copy { padding: 32px 24px; }
+      .proof-copy h3 { font-size: 37px; }
+      .proof-ui { min-height: 350px; padding: 14px; }
+      .ui-window-body { padding: 16px; }
+      .care-columns { grid-template-columns: 1fr; }
+      .care-column:not(:first-child) { display: none; }
+      .founder { padding: 78px 0; }
+      .founder-grid { gap: 34px; }
+      .founder-body { grid-template-columns: 1fr; gap: 19px; }
+      .early-access { padding: 72px 0; }
+      .form-card { padding: 24px 18px; }
+      .form-embed { height: min(720px, 82dvh); min-height: 580px; }
+      .questions { padding: 72px 0; }
+      .questions-grid { gap: 30px; }
+      summary { min-height: 76px; }
+      .footer-grid { align-items: flex-start; flex-direction: column; gap: 13px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .app-frame { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-od-id="site-header">
+    <div class="shell nav-wrap">
+      <a class="wordmark" href="#top" aria-label="Pews home">pews<i aria-hidden="true"></i></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#workflow">The church week</a>
+        <a href="#product">Inside Pews</a>
+        <a href="#story">Why Pews</a>
+      </nav>
+      <a class="button button-primary header-cta" href="#early-access">Request access</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" data-od-id="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Church operations, with the mission in view</p>
+          <h1>Hold the week together. <em>Without losing the why.</em></h1>
+          <p class="hero-copy">Pews brings services, people, care follow-ups, volunteer scheduling, giving, and communications into one church operations workspace—so ministry leaders can see what needs attention and move the week forward.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#early-access">Request beta access <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="button button-quiet" href="#product">See the product direction</a>
+          </div>
+          <p class="hero-note">Early access is for churches evaluating Pews as a paid product. Pricing is still being finalized.</p>
+        </div>
+
+        <div class="product-stage" aria-label="Illustrative Pews product preview with sample data">
+          <div class="sample-label">Illustrative interface preview · sample data</div>
+          <div class="app-frame">
+            <aside class="app-sidebar" aria-hidden="true">
+              <div class="mini-brand"><span class="mini-mark">p</span> pews</div>
+              <div class="mini-nav">
+                <span class="active">This week</span><span>People</span><span>Services</span><span>Scheduling</span><span>Care</span><span>Giving</span><span>Communications</span>
+              </div>
+            </aside>
+            <div class="app-content">
+              <div class="app-top">
+                <div><div class="app-kicker">Good morning</div><h2 class="app-title">This week at Riverstone</h2></div>
+                <div class="app-avatar" aria-hidden="true">RM</div>
+              </div>
+              <div class="week-bar">
+                <div><h3>Sunday is taking shape.</h3><p>A calm view of what is ready—and what still needs a person.</p></div>
+                <span class="week-state">Needs attention</span>
+              </div>
+              <div class="attention-list">
+                <div class="attention-row">
+                  <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 3v3m8-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg></span>
+                  <div><strong>Sunday service plan</strong><small>Order, songs, teams, and notes</small></div><span class="row-state">In planning</span>
+                </div>
+                <div class="attention-row">
+                  <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7-3h6m-3-3v6"/></svg></span>
+                  <div><strong>Volunteer positions</strong><small>Open roles grouped by service team</small></div><span class="row-state">Review needs</span>
+                </div>
+                <div class="attention-row">
+                  <span class="row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg></span>
+                  <div><strong>Care follow-ups</strong><small>Visitor, prayer, and pastoral care work</small></div><span class="row-state">Open board</span>
+                </div>
+              </div>
+              <div class="app-lower">
+                <div class="service-strip">
+                  <div class="strip-head"><span>Service readiness</span><span class="strip-meta">Sample</span></div>
+                  <div class="service-line ready"><span>Service details</span><span>Ready</span></div>
+                  <div class="service-line ready"><span>Order and songs</span><span>Ready</span></div>
+                  <div class="service-line needs"><span>Team assignments</span><span>Review</span></div>
+                </div>
+                <div class="care-strip">
+                  <div class="strip-head">Care queue</div><div class="care-count">Open</div><div class="care-label">Follow-ups can move from new to completed with notes and ownership.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signal-strip" aria-label="Pews product principles" data-od-id="principles-strip">
+      <div class="signal-grid">
+        <div class="signal-cell intro"><strong>Built for the shape of ministry work.</strong><p>Not another generic business dashboard with church labels added later.</p></div>
+        <div class="signal-cell"><span class="num">01</span><strong>See the week</strong><p>Services, volunteer needs, upcoming events, and useful next actions.</p></div>
+        <div class="signal-cell"><span class="num">02</span><strong>Care with context</strong><p>Follow-ups, notes, ownership, due dates, and the people behind the task.</p></div>
+        <div class="signal-cell"><span class="num">03</span><strong>Keep stewardship visible</strong><p>Giving, funds, donations, and statements live alongside the rest of church operations.</p></div>
+      </div>
+    </section>
+
+    <section class="workflow" id="workflow" data-od-id="weekly-workflow">
+      <div class="shell">
+        <div class="workflow-head">
+          <div><p class="eyebrow">One connected church week</p><h2 class="section-title">Software should clarify the work—not become more of it.</h2></div>
+          <p class="section-intro">Pews is being shaped around recurring ministry rhythms: preparing services, filling volunteer needs, following up with people, communicating clearly, and keeping stewardship work in view.</p>
+        </div>
+        <div class="workflow-list">
+          <article class="workflow-row"><span class="index">01 / Plan</span><h3>Prepare the service</h3><p>Create and copy services, work from templates, manage service status, and keep songs and teams close to the plan.</p></article>
+          <article class="workflow-row"><span class="index">02 / Staff</span><h3>Surface the gaps</h3><p>Review unfilled volunteer positions by date and team, search for people, and assign the work that still needs an owner.</p></article>
+          <article class="workflow-row"><span class="index">03 / Care</span><h3>Carry the follow-up</h3><p>Track visitor, prayer, pastoral-care, hospital, counseling, membership, and general follow-ups from new through completed.</p></article>
+          <article class="workflow-row"><span class="index">04 / Steward</span><h3>Keep the operations honest</h3><p>Manage people records, giving and funds, communications, check-ins, groups, events, and reporting within the same product.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="evidence" id="product" data-od-id="product-evidence">
+      <div class="shell">
+        <div class="evidence-head">
+          <div><p class="eyebrow">Grounded in the product</p><h2 class="section-title">Not a promise wall. A look at the work Pews already models.</h2></div>
+          <p class="section-intro">These previews reflect workflows already represented in Pews. The names and values shown are illustrative, so you can judge the product idea without mistaking sample data for customer proof.</p>
+        </div>
+
+        <div class="proof-tabs" role="tablist" aria-label="Product previews">
+          <button class="proof-tab" role="tab" aria-selected="true" aria-controls="panel-services" id="tab-services" data-panel="panel-services">Service planning</button>
+          <button class="proof-tab" role="tab" aria-selected="false" aria-controls="panel-care" id="tab-care" data-panel="panel-care" tabindex="-1">Care & follow-ups</button>
+          <button class="proof-tab" role="tab" aria-selected="false" aria-controls="panel-giving" id="tab-giving" data-panel="panel-giving" tabindex="-1">Giving visibility</button>
+        </div>
+
+        <div class="proof-panel active" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
+          <div class="proof-copy"><div class="source-note">Current product routes: services + scheduling needs</div><h3>Plan the gathering. See what is still open.</h3><p>A composed workspace for service plans and the volunteer positions that need attention before the week gets away.</p><ul><li>Service types, dates, times, statuses, and templates</li><li>Upcoming services and reusable plans</li><li>Unfilled volunteer positions grouped by date and team</li></ul></div>
+          <div class="proof-ui" aria-label="Illustrative service planning interface with sample data">
+            <div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Sunday service</h4><span>Planning</span></div><div class="ui-section-label">Order</div><div class="ui-row"><div><strong>Welcome & opening</strong><small>Service item</small></div><span class="ui-pill good">Ready</span></div><div class="ui-row"><div><strong>Music set</strong><small>Song library connected to the plan</small></div><span class="ui-pill good">Ready</span></div><div class="ui-row"><div><strong>Volunteer teams</strong><small>Assignments and open positions</small></div><span class="ui-pill">Needs review</span></div><div class="ui-section-label">Readiness</div><div class="ui-bars"><div class="ui-bar-line"><span>Plan</span><div class="ui-bar"><i style="width:100%"></i></div><span>Ready</span></div><div class="ui-bar-line"><span>Teams</span><div class="ui-bar"><i style="width:66%"></i></div><span>Open</span></div></div></div></div>
+          </div>
+        </div>
+
+        <div class="proof-panel" id="panel-care" role="tabpanel" aria-labelledby="tab-care" hidden>
+          <div class="proof-copy"><div class="source-note">Current product route: care</div><h3>Keep a human thread through every follow-up.</h3><p>Care work has a person, an owner, a priority, a due date, a status, and the notes that help the next conversation begin with context.</p><ul><li>Visitor, prayer, pastoral-care, and membership follow-ups</li><li>Ownership, priority, due dates, and overdue state</li><li>Notes history and clear status progression</li></ul></div>
+          <div class="proof-ui" aria-label="Illustrative care follow-up board with sample data"><div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Care & follow-ups</h4><span>Sample board</span></div><div class="care-columns"><div class="care-column"><strong>NEW</strong><div class="care-task"><strong>Welcome new family</strong><span>Visitor follow-up · Due this week</span></div><div class="care-task"><strong>Prayer response</strong><span>Assigned · Medium priority</span></div></div><div class="care-column"><strong>IN PROGRESS</strong><div class="care-task"><strong>Pastoral care check-in</strong><span>Notes added · In progress</span></div></div><div class="care-column"><strong>COMPLETED</strong><div class="care-task"><strong>Membership follow-up</strong><span>Completed · Notes retained</span></div></div></div></div></div></div>
+        </div>
+
+        <div class="proof-panel" id="panel-giving" role="tabpanel" aria-labelledby="tab-giving" hidden>
+          <div class="proof-copy"><div class="source-note">Current product routes: giving, funds, donations, statements</div><h3>See stewardship work in the same operational picture.</h3><p>Giving is not presented as theater. Pews models donation records, funds, statements, recent activity, trends, and the setup states teams need to manage.</p><ul><li>Donation recording and recent donation activity</li><li>Fund breakdown and giving trend views</li><li>Giving statements and configuration states</li></ul></div>
+          <div class="proof-ui" aria-label="Illustrative giving overview with sample data"><div class="ui-window"><div class="ui-window-top"><i></i><i></i><i></i></div><div class="ui-window-body"><div class="ui-titlebar"><h4>Giving overview</h4><span>Sample structure</span></div><div class="ui-section-label">Fund activity</div><div class="ui-bars"><div class="ui-bar-line"><span>General</span><div class="ui-bar"><i style="width:78%"></i></div><span>Share</span></div><div class="ui-bar-line"><span>Outreach</span><div class="ui-bar"><i style="width:47%"></i></div><span>Share</span></div><div class="ui-bar-line"><span>Care</span><div class="ui-bar"><i style="width:29%"></i></div><span>Share</span></div></div><div class="ui-section-label">Operational paths</div><div class="ui-row"><div><strong>Record a donation</strong><small>Cash, check, and tracked gifts</small></div><span class="ui-pill good">Available</span></div><div class="ui-row"><div><strong>Manage funds</strong><small>Fund setup and breakdown</small></div><span class="ui-pill good">Available</span></div><div class="ui-row"><div><strong>Prepare statements</strong><small>Giving statement workflow</small></div><span class="ui-pill good">Available</span></div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder" id="story" data-od-id="founder-story">
+      <div class="shell founder-grid">
+        <aside class="founder-aside"><div class="founder-rule" aria-hidden="true"></div><p>Pews is being built from lived ministry experience and twelve years in technology—not from a distance from church operations.</p></aside>
+        <div><p class="eyebrow">Why this product</p><blockquote class="founder-quote">“Church software should respect both the people doing the work and the mission funds paying for it.”</blockquote><div class="founder-body"><p>The founder spent years as a worship pastor before moving into technology. That first chapter made the weekly reality concrete: plans change, volunteers need clarity, people need care, and the administrative work never stays in one lane.</p><p>After twelve years in technology, those lessons are coming back together in Pews: applying the useful discipline of the corporate world without asking churches to buy complexity they do not need—or divert unreasonable resources away from the mission.</p></div></div>
+      </div>
+    </section>
+
+    <section class="early-access" id="early-access" data-od-id="early-access-form">
+      <div class="shell access-grid">
+        <div class="access-copy"><p class="eyebrow">Beta early access</p><h2 class="section-title">Help shape software that understands the week you carry.</h2><p class="section-intro">Pews is looking for church leaders and operators willing to evaluate a product in progress, share how their ministry actually works, and tell us where software creates more burden than clarity.</p><ul class="access-points"><li>For pastors, worship pastors, executive pastors, administrators, and ministry operations leaders</li><li>A focused conversation about fit—not an invented promise that every church works the same way</li><li>Product access and timing will depend on beta fit and readiness</li></ul><p class="rate-note">Accepted beta participants will receive a preferred, committed early-access rate once pricing is finalized.</p></div>
+
+        <div class="form-card">
+          <h3>Request a beta conversation</h3>
+          <p>Tell us where your church is feeling the most friction. The fit check takes about three minutes.</p>
+          <div class="form-embed">
+            <iframe title="Pews early-access fit check" src="https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&amp;brand=pews&amp;page=landing&amp;placement=inline_form&amp;intent=beta_early_access" loading="eager"></iframe>
+          </div>
+          <p class="form-fine">No payment is collected here. Submitting requests a beta conversation; it does not guarantee acceptance or commit your church to a price.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="questions" data-od-id="questions">
+      <div class="shell questions-grid"><div><p class="eyebrow">Before you request access</p><h2>Clear answers, while the product is still early.</h2></div><div class="faq">
+        <details><summary>Is the beta free?</summary><p>No free-beta claim is being made. Pews is being evaluated as a paid product, and final pricing is still being set. Accepted beta participants will receive a preferred, committed early-access rate once pricing is finalized.</p></details>
+        <details><summary>What parts of church work does Pews cover?</summary><p>Pews includes people and households, services and songs, volunteer scheduling, care follow-ups, giving and statements, communications, check-ins, groups, events, prayer, media, sermons, streaming, rooms, reports, and administrative settings. Beta scope may be narrower than the complete product.</p></details>
+        <details><summary>What happens after I submit?</summary><p>The Pews team will review your answers and follow up when there is a useful next step. Submission is a request for a conversation, not a guarantee of access, timing, or a particular feature set.</p></details>
+      </div></div>
+    </section>
+  </main>
+
+  <footer data-od-id="footer"><div class="shell footer-grid"><a class="wordmark" href="#top" aria-label="Pews home">pews<i aria-hidden="true"></i></a><p class="footer-note">Church operations software, built with the mission in view.</p><a class="footer-cta" href="#early-access">Request beta access</a></div></footer>
+
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      const selectTab = (tab) => {
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          item.tabIndex = selected ? 0 : -1;
+          const panel = document.getElementById(item.dataset.panel);
+          panel.hidden = !selected;
+          panel.classList.toggle('active', selected);
+        });
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') next = 0;
+          if (event.key === 'End') next = tabs.length - 1;
+          selectTab(tabs[next]);
+          tabs[next].focus();
+        });
+      });
+
+      window.addEventListener('message', (event) => {
+        if (event.origin === 'https://intake.clearlinetechmethods.com' && event.data === 'formbricksSurveyCompleted') {
+          document.querySelector('.form-card h3').textContent = 'Thanks for helping shape Pews.';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

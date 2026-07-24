@@ -1,0 +1,82 @@
+{
+  "baseUrl": "http://127.0.0.1:19432/",
+  "formUrl": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "metrics": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "title": "Pews — Church work, held together",
+        "h1": "Hold the week together.\nWithout losing the why.",
+        "iframeSrc": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&brand=pews&page=landing&placement=inline_form&intent=beta_early_access"
+      },
+      "careVisible": true,
+      "givingVisible": true,
+      "axeViolations": 0,
+      "seriousAxeViolations": 0,
+      "targetIssues": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "name": "tablet",
+      "width": 1024,
+      "height": 900,
+      "metrics": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "scrollWidth": 1024,
+        "title": "Pews — Church work, held together",
+        "h1": "Hold the week together.\nWithout losing the why.",
+        "iframeSrc": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&brand=pews&page=landing&placement=inline_form&intent=beta_early_access"
+      },
+      "careVisible": true,
+      "givingVisible": true,
+      "axeViolations": 0,
+      "seriousAxeViolations": 0,
+      "targetIssues": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "metrics": {
+        "innerWidth": 390,
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "title": "Pews — Church work, held together",
+        "h1": "Hold the week together.\nWithout losing the why.",
+        "iframeSrc": "https://intake.clearlinetechmethods.com/s/cmrz46a4s002e01s3zt5ztqlq?embed=true&brand=pews&page=landing&placement=inline_form&intent=beta_early_access"
+      },
+      "careVisible": true,
+      "givingVisible": true,
+      "axeViolations": 0,
+      "seriousAxeViolations": 0,
+      "targetIssues": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    }
+  ],
+  "formbricks": {
+    "status": 200,
+    "metrics": {
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "title": "Help shape Pews before launch | Formbricks"
+    },
+    "hasWelcomeCopy": true,
+    "hasStartButton": true,
+    "seriousAxeViolations": [],
+    "pageErrors": []
+  },
+  "failures": []
+}

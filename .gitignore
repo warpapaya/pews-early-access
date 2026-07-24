@@ -1,0 +1,4 @@
+node_modules/
+qa/screenshots/
+formbricks/survey-result.json
+.DS_Store
