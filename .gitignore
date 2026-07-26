@@ -1,4 +1,12 @@
-node_modules/
-qa/screenshots/
-formbricks/survey-result.json
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
 .DS_Store
+.env
+.env.*
+.coverage
+htmlcov/
+data/
+artifacts/

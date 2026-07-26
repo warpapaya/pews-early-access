@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23327b78'/%3E%3C/svg%3E">
+  <title>Pews Ops — This week</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to work</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Pews Ops home"><span>pews</span><i></i><small>ops beta</small></a>
+    <div class="source-health source-{{ source.connection.state }}">
+      <span class="health-dot"></span>
+      <div><strong>Planning Center</strong><small>{{ source.connection.state }} · read only</small></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell">
+      <div><p class="eyebrow">The church week · operational view</p><h1>What needs attention?</h1><p class="lede">Pews keeps the next useful actions visible while your ministry teams keep using the tools they already depend on.</p></div>
+      <button class="primary" type="button" data-open-dialog>Add follow-up</button>
+    </section>
+
+    {% if source.connection.state != 'fresh' %}
+    <div class="shell notice" role="status"><strong>Source data is {{ source.connection.state }}.</strong> {{ source.connection.message }}</div>
+    {% endif %}
+
+    <section class="attention shell" aria-labelledby="attention-title">
+      <div class="section-head"><div><p class="eyebrow">Live source signals</p><h2 id="attention-title">This week at a glance</h2></div><p>Observed {{ source.connection.observed_at }}</p></div>
+      <div class="signal-grid">
+        <article class="signal urgent"><span>PCO-requested team slots</span>{% if open_positions is none %}<strong>—</strong><p>Source unavailable; no count inferred.</p>{% else %}<strong>{{ open_positions }}</strong><p>{{ open_positions }} unfilled assignment slots across the service plans in view.</p>{% endif %}</article>
+        <article class="signal"><span>Awaiting responses</span>{% if source.team_status.unconfirmed is none %}<strong>—</strong><p>Source unavailable; no count inferred.</p>{% else %}<strong>{{ source.team_status.unconfirmed }}</strong><p>Explicitly unconfirmed PCO assignments.{% if source.team_status.unknown %} {{ source.team_status.unknown }} unknown states excluded.{% endif %}</p>{% endif %}</article>
+        <article class="signal"><span>Declined assignments</span>{% if source.team_status.declined is none %}<strong>—</strong><p>Source unavailable; no count inferred.</p>{% else %}<strong>{{ source.team_status.declined }}</strong><p>Responses that may require another person.</p>{% endif %}</article>
+        <article class="signal"><span>Local follow-ups</span><strong>{{ actions|length }}</strong><p>Church-specific actions owned in Pews, not written back to PCO.</p></article>
+      </div>
+    </section>
+
+    <section class="workspace shell">
+      <div class="plans-panel">
+        <div class="section-head"><div><p class="eyebrow">Planning Center Services</p><h2>Upcoming gatherings</h2></div><span class="source-badge">Source-backed</span></div>
+        <div class="plan-list">
+          {% for plan in source.plans %}
+          <article class="plan-row">
+            <div class="date-mark"><span>{{ plan.dates }}</span></div>
+            <div><h3>{{ plan.title }}</h3><p>{% if plan.needed_positions_count is none %}Open-position count unavailable{% else %}{{ plan.needed_positions_count }} open positions{% endif %} · synced {{ plan.observed_at }}</p></div>
+            {% if plan.planning_center_url %}<a href="{{ plan.planning_center_url }}" target="_blank" rel="noopener noreferrer">Open in PCO <span aria-hidden="true">↗</span></a>{% endif %}
+          </article>
+          {% else %}
+          <div class="empty"><strong>No upcoming plans returned.</strong><p>Pews will not invent readiness when the source has no records.</p></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <aside class="actions-panel" aria-labelledby="actions-title">
+        <div class="section-head"><div><p class="eyebrow">System of action</p><h2 id="actions-title">Follow-through</h2></div></div>
+        <div class="action-list">
+          {% for action in actions %}
+          <article class="action-card priority-{{ action.priority }}">
+            <div class="action-top"><span>{{ action.priority }}</span><small>{{ action.due_date or 'No due date' }}</small></div>
+            <h3>{{ action.title }}</h3>
+            {% if action.external_id %}<p class="person">Linked Planning Center person</p>{% endif %}
+            <p>Owner: {{ action.owner }}</p>
+            <form action="/actions/{{ action.id }}/status" method="post"><input type="hidden" name="status" value="done"><button type="submit">Mark complete</button></form>
+          </article>
+          {% else %}
+          <div class="empty"><strong>No local follow-ups yet.</strong><p>Add one without changing anything in Planning Center.</p></div>
+          {% endfor %}
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="action-dialog">
+    <form method="post" action="/actions">
+      <div class="dialog-head"><div><p class="eyebrow">Local-only action</p><h2>Add follow-up</h2></div><button type="button" class="icon-button" data-close-dialog aria-label="Close">×</button></div>
+      <p class="form-note">This action stays in Pews. It will not change Planning Center.</p>
+      <label>What needs to happen?<input name="title" required maxlength="160" placeholder="Call first-time guest"></label>
+      <div class="two-col"><label>Owner<input name="owner" required maxlength="80" placeholder="Care team"></label><label>Due date<input name="due_date" type="date"></label></div>
+      <label>Priority<select name="priority"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option></select></label>
+      <label>Person from Planning Center <span>(optional)</span><input id="person-search" autocomplete="off" placeholder="Search by name"><input id="external-id" type="hidden" name="external_id"><input type="hidden" name="source_type" value="planning_center_people_person"><div id="people-results" class="people-results" role="listbox"></div></label>
+      <button class="primary submit" type="submit">Add follow-up</button>
+    </form>
+  </dialog>
+</body>
+</html>

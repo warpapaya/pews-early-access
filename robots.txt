@@ -1,5 +1,0 @@
-# Allow the public early-access pages for search engines
-User-agent: *
-Allow: /
-
-Sitemap: https://warpapaya.github.io/pews-early-access/sitemap.xml

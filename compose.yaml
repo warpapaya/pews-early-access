@@ -1,8 +1,0 @@
-services:
-  web:
-    build: .
-    container_name: pews-early-access-review
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:19432:80"
-      - "100.84.89.93:19432:80"
